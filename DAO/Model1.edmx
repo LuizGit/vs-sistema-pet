@@ -1,0 +1,1133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mydbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="agendamento">
+          <Key>
+            <PropertyRef Name="idAgendamento" />
+          </Key>
+          <Property Name="idAgendamento" Type="int" Nullable="false" />
+          <Property Name="inicio" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Final" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="idPet" Type="int" Nullable="false" />
+          <Property Name="idServico" Type="int" />
+          <Property Name="idPacote" Type="int" />
+        </EntityType>
+        <EntityType Name="item_mercadoriaos">
+          <Key>
+            <PropertyRef Name="idItem" />
+          </Key>
+          <Property Name="idItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QtdItem" Type="int" Nullable="false" />
+          <Property Name="Desconto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Acrescimo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TotalItem" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="idMercadoria" Type="int" Nullable="false" />
+          <Property Name="idOrdemServico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="item_pacote">
+          <Key>
+            <PropertyRef Name="idItem_Pacote" />
+          </Key>
+          <Property Name="idItem_Pacote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QtdItem" Type="int" Nullable="false" />
+          <Property Name="ValorTotal" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="idPacote" Type="int" Nullable="false" />
+          <Property Name="idMercadoria" Type="int" />
+          <Property Name="idServico" Type="int" />
+        </EntityType>
+        <EntityType Name="item_pacoteos">
+          <Key>
+            <PropertyRef Name="idItem_PacoteOS" />
+          </Key>
+          <Property Name="idItem_PacoteOS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QtdItem" Type="int" Nullable="false" />
+          <Property Name="Desconto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Acrescimo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TotalItem" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="idPacote" Type="int" Nullable="false" />
+          <Property Name="idOrdemServico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="item_servicoos">
+          <Key>
+            <PropertyRef Name="idItem" />
+          </Key>
+          <Property Name="idItem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QtdItem" Type="int" Nullable="false" />
+          <Property Name="Desconto" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Acrescimo" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TotalItem" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="idServico" Type="int" Nullable="false" />
+          <Property Name="idOrdemServico" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="localestoque">
+          <Key>
+            <PropertyRef Name="idLocalEstoque" />
+          </Key>
+          <Property Name="idLocalEstoque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantidade" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Mercadoria_idMercadoria" Type="int" Nullable="false" />
+          <Property Name="EntradaSaida" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mercadoria">
+          <Key>
+            <PropertyRef Name="idMercadoria" />
+          </Key>
+          <Property Name="idMercadoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CodBarras" Type="varchar" MaxLength="13" />
+          <Property Name="Preco" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ordemservico">
+          <Key>
+            <PropertyRef Name="idOrdemServico" />
+          </Key>
+          <Property Name="idOrdemServico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="NomeCliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NomePET" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pacote">
+          <Key>
+            <PropertyRef Name="idPacote" />
+          </Key>
+          <Property Name="idPacote" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="parceironegocio">
+          <Key>
+            <PropertyRef Name="idParceiroNegocio" />
+          </Key>
+          <Property Name="idParceiroNegocio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomeRazao" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CpfCnpj" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="TipoPN" Type="int" Nullable="false" />
+          <Property Name="Logradouro" Type="varchar" MaxLength="100" />
+          <Property Name="Bairro" Type="varchar" MaxLength="50" />
+          <Property Name="Cidade" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+          <Property Name="Contato" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="Ativo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pet">
+          <Key>
+            <PropertyRef Name="idPet" />
+          </Key>
+          <Property Name="idPet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Idade" Type="int" />
+          <Property Name="Descricao" Type="varchar" MaxLength="300" />
+          <Property Name="idTipo" Type="int" Nullable="false" />
+          <Property Name="idPN" Type="int" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Castrado" Type="int" Nullable="false" />
+          <Property Name="dtNascimento" Type="date" />
+          <Property Name="idPorte" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="porte">
+          <Key>
+            <PropertyRef Name="idPorte" />
+          </Key>
+          <Property Name="idPorte" Type="int" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="servico">
+          <Key>
+            <PropertyRef Name="idServico" />
+          </Key>
+          <Property Name="idServico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Preco" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipopet">
+          <Key>
+            <PropertyRef Name="idTipoPet" />
+          </Key>
+          <Property Name="idTipoPet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="idPN" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_Agendamento_Pacote1">
+          <End Role="pacote" Type="Self.pacote" Multiplicity="0..1" />
+          <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idPacote" />
+            </Principal>
+            <Dependent Role="agendamento">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Agendamento_Pet1">
+          <End Role="pet" Type="Self.pet" Multiplicity="1" />
+          <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pet">
+              <PropertyRef Name="idPet" />
+            </Principal>
+            <Dependent Role="agendamento">
+              <PropertyRef Name="idPet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Agendamento_Servico1">
+          <End Role="servico" Type="Self.servico" Multiplicity="0..1" />
+          <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servico">
+              <PropertyRef Name="idServico" />
+            </Principal>
+            <Dependent Role="agendamento">
+              <PropertyRef Name="idServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_MercadoriaOS_Mercadoria1">
+          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="1" />
+          <End Role="item_mercadoriaos" Type="Self.item_mercadoriaos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="item_mercadoriaos">
+              <PropertyRef Name="idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_MercadoriaOS_OrdemServico1">
+          <End Role="ordemservico" Type="Self.ordemservico" Multiplicity="1" />
+          <End Role="item_mercadoriaos" Type="Self.item_mercadoriaos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordemservico">
+              <PropertyRef Name="idOrdemServico" />
+            </Principal>
+            <Dependent Role="item_mercadoriaos">
+              <PropertyRef Name="idOrdemServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Mercadoria1">
+          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="0..1" />
+          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Pacote1">
+          <End Role="pacote" Type="Self.pacote" Multiplicity="1" />
+          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idPacote" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Servico1">
+          <End Role="servico" Type="Self.servico" Multiplicity="0..1" />
+          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servico">
+              <PropertyRef Name="idServico" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_PacoteOS_OrdemServico1">
+          <End Role="ordemservico" Type="Self.ordemservico" Multiplicity="1" />
+          <End Role="item_pacoteos" Type="Self.item_pacoteos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordemservico">
+              <PropertyRef Name="idOrdemServico" />
+            </Principal>
+            <Dependent Role="item_pacoteos">
+              <PropertyRef Name="idOrdemServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_PacoteOS_Pacote1">
+          <End Role="pacote" Type="Self.pacote" Multiplicity="1" />
+          <End Role="item_pacoteos" Type="Self.item_pacoteos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idPacote" />
+            </Principal>
+            <Dependent Role="item_pacoteos">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_ServicoOS_OrdemServico1">
+          <End Role="ordemservico" Type="Self.ordemservico" Multiplicity="1" />
+          <End Role="item_servicoos" Type="Self.item_servicoos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordemservico">
+              <PropertyRef Name="idOrdemServico" />
+            </Principal>
+            <Dependent Role="item_servicoos">
+              <PropertyRef Name="idOrdemServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_ServicoOS_Servico1">
+          <End Role="servico" Type="Self.servico" Multiplicity="1" />
+          <End Role="item_servicoos" Type="Self.item_servicoos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servico">
+              <PropertyRef Name="idServico" />
+            </Principal>
+            <Dependent Role="item_servicoos">
+              <PropertyRef Name="idServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LocalEstoque_Mercadoria1">
+          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="1" />
+          <End Role="localestoque" Type="Self.localestoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="localestoque">
+              <PropertyRef Name="Mercadoria_idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_ParceiroNegocio1">
+          <End Role="parceironegocio" Type="Self.parceironegocio" Multiplicity="1" />
+          <End Role="pet" Type="Self.pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parceironegocio">
+              <PropertyRef Name="idParceiroNegocio" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_Porte1">
+          <End Role="porte" Type="Self.porte" Multiplicity="1" />
+          <End Role="pet" Type="Self.pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="porte">
+              <PropertyRef Name="idPorte" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idPorte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_TipoPet">
+          <End Role="tipopet" Type="Self.tipopet" Multiplicity="1" />
+          <End Role="pet" Type="Self.pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipopet">
+              <PropertyRef Name="idTipoPet" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario_ParceiroNegocio1">
+          <End Role="parceironegocio" Type="Self.parceironegocio" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parceironegocio">
+              <PropertyRef Name="idParceiroNegocio" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mydbModelStoreContainer">
+          <EntitySet Name="agendamento" EntityType="Self.agendamento" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="item_mercadoriaos" EntityType="Self.item_mercadoriaos" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="item_pacote" EntityType="Self.item_pacote" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="item_pacoteos" EntityType="Self.item_pacoteos" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="item_servicoos" EntityType="Self.item_servicoos" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="localestoque" EntityType="Self.localestoque" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="mercadoria" EntityType="Self.mercadoria" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="ordemservico" EntityType="Self.ordemservico" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="pacote" EntityType="Self.pacote" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="parceironegocio" EntityType="Self.parceironegocio" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="pet" EntityType="Self.pet" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="porte" EntityType="Self.porte" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="servico" EntityType="Self.servico" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="tipopet" EntityType="Self.tipopet" Schema="mydb" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="mydb" store:Type="Tables" />
+          <AssociationSet Name="fk_Agendamento_Pacote1" Association="Self.fk_Agendamento_Pacote1">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Agendamento_Pet1" Association="Self.fk_Agendamento_Pet1">
+            <End Role="pet" EntitySet="pet" />
+            <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Agendamento_Servico1" Association="Self.fk_Agendamento_Servico1">
+            <End Role="servico" EntitySet="servico" />
+            <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_MercadoriaOS_Mercadoria1" Association="Self.fk_Item_MercadoriaOS_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="item_mercadoriaos" EntitySet="item_mercadoriaos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_MercadoriaOS_OrdemServico1" Association="Self.fk_Item_MercadoriaOS_OrdemServico1">
+            <End Role="ordemservico" EntitySet="ordemservico" />
+            <End Role="item_mercadoriaos" EntitySet="item_mercadoriaos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Mercadoria1" Association="Self.fk_Item_Pacote_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Pacote1" Association="Self.fk_Item_Pacote_Pacote1">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Servico1" Association="Self.fk_Item_Pacote_Servico1">
+            <End Role="servico" EntitySet="servico" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_PacoteOS_OrdemServico1" Association="Self.fk_Item_PacoteOS_OrdemServico1">
+            <End Role="ordemservico" EntitySet="ordemservico" />
+            <End Role="item_pacoteos" EntitySet="item_pacoteos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_PacoteOS_Pacote1" Association="Self.fk_Item_PacoteOS_Pacote1">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="item_pacoteos" EntitySet="item_pacoteos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_ServicoOS_OrdemServico1" Association="Self.fk_Item_ServicoOS_OrdemServico1">
+            <End Role="ordemservico" EntitySet="ordemservico" />
+            <End Role="item_servicoos" EntitySet="item_servicoos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_ServicoOS_Servico1" Association="Self.fk_Item_ServicoOS_Servico1">
+            <End Role="servico" EntitySet="servico" />
+            <End Role="item_servicoos" EntitySet="item_servicoos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LocalEstoque_Mercadoria1" Association="Self.fk_LocalEstoque_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="localestoque" EntitySet="localestoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pet_ParceiroNegocio1" Association="Self.fk_Pet_ParceiroNegocio1">
+            <End Role="parceironegocio" EntitySet="parceironegocio" />
+            <End Role="pet" EntitySet="pet" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pet_Porte1" Association="Self.fk_Pet_Porte1">
+            <End Role="porte" EntitySet="porte" />
+            <End Role="pet" EntitySet="pet" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pet_TipoPet" Association="Self.fk_Pet_TipoPet">
+            <End Role="tipopet" EntitySet="tipopet" />
+            <End Role="pet" EntitySet="pet" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario_ParceiroNegocio1" Association="Self.fk_Usuario_ParceiroNegocio1">
+            <End Role="parceironegocio" EntitySet="parceironegocio" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mydbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="agendamento">
+          <Key>
+            <PropertyRef Name="idAgendamento" />
+          </Key>
+          <Property Name="idAgendamento" Type="Int32" Nullable="false" />
+          <Property Name="inicio" Type="DateTime" Nullable="false" />
+          <Property Name="Final" Type="DateTime" Nullable="false" />
+          <Property Name="idPet" Type="Int32" Nullable="false" />
+          <Property Name="idServico" Type="Int32" />
+          <Property Name="idPacote" Type="Int32" />
+          <NavigationProperty Name="pacote" Relationship="Self.fk_Agendamento_Pacote1" FromRole="agendamento" ToRole="pacote" />
+          <NavigationProperty Name="pet" Relationship="Self.fk_Agendamento_Pet1" FromRole="agendamento" ToRole="pet" />
+          <NavigationProperty Name="servico" Relationship="Self.fk_Agendamento_Servico1" FromRole="agendamento" ToRole="servico" />
+        </EntityType>
+        <EntityType Name="item_mercadoriaos">
+          <Key>
+            <PropertyRef Name="idItem" />
+          </Key>
+          <Property Name="idItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QtdItem" Type="Int32" Nullable="false" />
+          <Property Name="Desconto" Type="Decimal" Nullable="false" />
+          <Property Name="Acrescimo" Type="Decimal" Nullable="false" />
+          <Property Name="TotalItem" Type="Decimal" Nullable="false" />
+          <Property Name="idMercadoria" Type="Int32" Nullable="false" />
+          <Property Name="idOrdemServico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mercadoria" Relationship="Self.fk_Item_MercadoriaOS_Mercadoria1" FromRole="item_mercadoriaos" ToRole="mercadoria" />
+          <NavigationProperty Name="ordemservico" Relationship="Self.fk_Item_MercadoriaOS_OrdemServico1" FromRole="item_mercadoriaos" ToRole="ordemservico" />
+        </EntityType>
+        <EntityType Name="item_pacote">
+          <Key>
+            <PropertyRef Name="idItem_Pacote" />
+          </Key>
+          <Property Name="idItem_Pacote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QtdItem" Type="Int32" Nullable="false" />
+          <Property Name="ValorTotal" Type="Decimal" Nullable="false" />
+          <Property Name="idPacote" Type="Int32" Nullable="false" />
+          <Property Name="idMercadoria" Type="Int32" />
+          <Property Name="idServico" Type="Int32" />
+          <NavigationProperty Name="mercadoria" Relationship="Self.fk_Item_Pacote_Mercadoria1" FromRole="item_pacote" ToRole="mercadoria" />
+          <NavigationProperty Name="pacote" Relationship="Self.fk_Item_Pacote_Pacote1" FromRole="item_pacote" ToRole="pacote" />
+          <NavigationProperty Name="servico" Relationship="Self.fk_Item_Pacote_Servico1" FromRole="item_pacote" ToRole="servico" />
+        </EntityType>
+        <EntityType Name="item_pacoteos">
+          <Key>
+            <PropertyRef Name="idItem_PacoteOS" />
+          </Key>
+          <Property Name="idItem_PacoteOS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QtdItem" Type="Int32" Nullable="false" />
+          <Property Name="Desconto" Type="Decimal" Nullable="false" />
+          <Property Name="Acrescimo" Type="Decimal" Nullable="false" />
+          <Property Name="TotalItem" Type="Decimal" Nullable="false" />
+          <Property Name="idPacote" Type="Int32" Nullable="false" />
+          <Property Name="idOrdemServico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ordemservico" Relationship="Self.fk_Item_PacoteOS_OrdemServico1" FromRole="item_pacoteos" ToRole="ordemservico" />
+          <NavigationProperty Name="pacote" Relationship="Self.fk_Item_PacoteOS_Pacote1" FromRole="item_pacoteos" ToRole="pacote" />
+        </EntityType>
+        <EntityType Name="item_servicoos">
+          <Key>
+            <PropertyRef Name="idItem" />
+          </Key>
+          <Property Name="idItem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QtdItem" Type="Int32" Nullable="false" />
+          <Property Name="Desconto" Type="Decimal" Nullable="false" />
+          <Property Name="Acrescimo" Type="Decimal" Nullable="false" />
+          <Property Name="TotalItem" Type="Decimal" Nullable="false" />
+          <Property Name="idServico" Type="Int32" Nullable="false" />
+          <Property Name="idOrdemServico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ordemservico" Relationship="Self.fk_Item_ServicoOS_OrdemServico1" FromRole="item_servicoos" ToRole="ordemservico" />
+          <NavigationProperty Name="servico" Relationship="Self.fk_Item_ServicoOS_Servico1" FromRole="item_servicoos" ToRole="servico" />
+        </EntityType>
+        <EntityType Name="localestoque">
+          <Key>
+            <PropertyRef Name="idLocalEstoque" />
+          </Key>
+          <Property Name="idLocalEstoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantidade" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mercadoria_idMercadoria" Type="Int32" Nullable="false" />
+          <Property Name="EntradaSaida" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mercadoria" Relationship="Self.fk_LocalEstoque_Mercadoria1" FromRole="localestoque" ToRole="mercadoria" />
+        </EntityType>
+        <EntityType Name="mercadoria">
+          <Key>
+            <PropertyRef Name="idMercadoria" />
+          </Key>
+          <Property Name="idMercadoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodBarras" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Preco" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="item_mercadoriaos" Relationship="Self.fk_Item_MercadoriaOS_Mercadoria1" FromRole="mercadoria" ToRole="item_mercadoriaos" />
+          <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Mercadoria1" FromRole="mercadoria" ToRole="item_pacote" />
+          <NavigationProperty Name="localestoque" Relationship="Self.fk_LocalEstoque_Mercadoria1" FromRole="mercadoria" ToRole="localestoque" />
+        </EntityType>
+        <EntityType Name="ordemservico">
+          <Key>
+            <PropertyRef Name="idOrdemServico" />
+          </Key>
+          <Property Name="idOrdemServico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Nullable="false" />
+          <Property Name="NomeCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomePET" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="item_mercadoriaos" Relationship="Self.fk_Item_MercadoriaOS_OrdemServico1" FromRole="ordemservico" ToRole="item_mercadoriaos" />
+          <NavigationProperty Name="item_pacoteos" Relationship="Self.fk_Item_PacoteOS_OrdemServico1" FromRole="ordemservico" ToRole="item_pacoteos" />
+          <NavigationProperty Name="item_servicoos" Relationship="Self.fk_Item_ServicoOS_OrdemServico1" FromRole="ordemservico" ToRole="item_servicoos" />
+        </EntityType>
+        <EntityType Name="pacote">
+          <Key>
+            <PropertyRef Name="idPacote" />
+          </Key>
+          <Property Name="idPacote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="agendamento" Relationship="Self.fk_Agendamento_Pacote1" FromRole="pacote" ToRole="agendamento" />
+          <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Pacote1" FromRole="pacote" ToRole="item_pacote" />
+          <NavigationProperty Name="item_pacoteos" Relationship="Self.fk_Item_PacoteOS_Pacote1" FromRole="pacote" ToRole="item_pacoteos" />
+        </EntityType>
+        <EntityType Name="pet">
+          <Key>
+            <PropertyRef Name="idPet" />
+          </Key>
+          <Property Name="idPet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Idade" Type="Int32" />
+          <Property Name="Descricao" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="idTipo" Type="Int32" Nullable="false" />
+          <Property Name="idPN" Type="Int32" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Castrado" Type="Int32" Nullable="false" />
+          <Property Name="dtNascimento" Type="DateTime" />
+          <Property Name="idPorte" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="agendamento" Relationship="Self.fk_Agendamento_Pet1" FromRole="pet" ToRole="agendamento" />
+          <NavigationProperty Name="porte" Relationship="Self.fk_Pet_Porte1" FromRole="pet" ToRole="porte" />
+          <NavigationProperty Name="tipopet" Relationship="Self.fk_Pet_TipoPet" FromRole="pet" ToRole="tipopet" />
+          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="pet" ToRole="parceironegocio" />
+        </EntityType>
+        <EntityType Name="porte">
+          <Key>
+            <PropertyRef Name="idPorte" />
+          </Key>
+          <Property Name="idPorte" Type="Int32" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="pet" Relationship="Self.fk_Pet_Porte1" FromRole="porte" ToRole="pet" />
+        </EntityType>
+        <EntityType Name="servico">
+          <Key>
+            <PropertyRef Name="idServico" />
+          </Key>
+          <Property Name="idServico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Preco" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="agendamento" Relationship="Self.fk_Agendamento_Servico1" FromRole="servico" ToRole="agendamento" />
+          <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Servico1" FromRole="servico" ToRole="item_pacote" />
+          <NavigationProperty Name="item_servicoos" Relationship="Self.fk_Item_ServicoOS_Servico1" FromRole="servico" ToRole="item_servicoos" />
+        </EntityType>
+        <EntityType Name="tipopet">
+          <Key>
+            <PropertyRef Name="idTipoPet" />
+          </Key>
+          <Property Name="idTipoPet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="pet" Relationship="Self.fk_Pet_TipoPet" FromRole="tipopet" ToRole="pet" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPN" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Usuario_ParceiroNegocio1" FromRole="usuario" ToRole="parceironegocio" />
+        </EntityType>
+        <Association Name="fk_Agendamento_Pacote1">
+          <End Role="pacote" Type="Self.pacote" Multiplicity="0..1" />
+          <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idPacote" />
+            </Principal>
+            <Dependent Role="agendamento">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Agendamento_Pet1">
+          <End Role="pet" Type="Self.pet" Multiplicity="1" />
+          <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pet">
+              <PropertyRef Name="idPet" />
+            </Principal>
+            <Dependent Role="agendamento">
+              <PropertyRef Name="idPet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Agendamento_Servico1">
+          <End Role="servico" Type="Self.servico" Multiplicity="0..1" />
+          <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servico">
+              <PropertyRef Name="idServico" />
+            </Principal>
+            <Dependent Role="agendamento">
+              <PropertyRef Name="idServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_MercadoriaOS_Mercadoria1">
+          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="1" />
+          <End Role="item_mercadoriaos" Type="Self.item_mercadoriaos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="item_mercadoriaos">
+              <PropertyRef Name="idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_MercadoriaOS_OrdemServico1">
+          <End Role="ordemservico" Type="Self.ordemservico" Multiplicity="1" />
+          <End Role="item_mercadoriaos" Type="Self.item_mercadoriaos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordemservico">
+              <PropertyRef Name="idOrdemServico" />
+            </Principal>
+            <Dependent Role="item_mercadoriaos">
+              <PropertyRef Name="idOrdemServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Mercadoria1">
+          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="0..1" />
+          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Pacote1">
+          <End Role="pacote" Type="Self.pacote" Multiplicity="1" />
+          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idPacote" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Servico1">
+          <End Role="servico" Type="Self.servico" Multiplicity="0..1" />
+          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servico">
+              <PropertyRef Name="idServico" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_PacoteOS_OrdemServico1">
+          <End Role="ordemservico" Type="Self.ordemservico" Multiplicity="1" />
+          <End Role="item_pacoteos" Type="Self.item_pacoteos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordemservico">
+              <PropertyRef Name="idOrdemServico" />
+            </Principal>
+            <Dependent Role="item_pacoteos">
+              <PropertyRef Name="idOrdemServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_PacoteOS_Pacote1">
+          <End Role="pacote" Type="Self.pacote" Multiplicity="1" />
+          <End Role="item_pacoteos" Type="Self.item_pacoteos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idPacote" />
+            </Principal>
+            <Dependent Role="item_pacoteos">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_ServicoOS_OrdemServico1">
+          <End Role="ordemservico" Type="Self.ordemservico" Multiplicity="1" />
+          <End Role="item_servicoos" Type="Self.item_servicoos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordemservico">
+              <PropertyRef Name="idOrdemServico" />
+            </Principal>
+            <Dependent Role="item_servicoos">
+              <PropertyRef Name="idOrdemServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_ServicoOS_Servico1">
+          <End Role="servico" Type="Self.servico" Multiplicity="1" />
+          <End Role="item_servicoos" Type="Self.item_servicoos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servico">
+              <PropertyRef Name="idServico" />
+            </Principal>
+            <Dependent Role="item_servicoos">
+              <PropertyRef Name="idServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LocalEstoque_Mercadoria1">
+          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="1" />
+          <End Role="localestoque" Type="Self.localestoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="localestoque">
+              <PropertyRef Name="Mercadoria_idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_Porte1">
+          <End Role="porte" Type="Self.porte" Multiplicity="1" />
+          <End Role="pet" Type="Self.pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="porte">
+              <PropertyRef Name="idPorte" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idPorte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_TipoPet">
+          <End Role="tipopet" Type="Self.tipopet" Multiplicity="1" />
+          <End Role="pet" Type="Self.pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipopet">
+              <PropertyRef Name="idTipoPet" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="banco" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="agendamento" EntityType="Self.agendamento" />
+          <EntitySet Name="item_mercadoriaos" EntityType="Self.item_mercadoriaos" />
+          <EntitySet Name="item_pacote" EntityType="Self.item_pacote" />
+          <EntitySet Name="item_pacoteos" EntityType="Self.item_pacoteos" />
+          <EntitySet Name="item_servicoos" EntityType="Self.item_servicoos" />
+          <EntitySet Name="localestoque" EntityType="Self.localestoque" />
+          <EntitySet Name="mercadoria" EntityType="Self.mercadoria" />
+          <EntitySet Name="ordemservico" EntityType="Self.ordemservico" />
+          <EntitySet Name="pacote" EntityType="Self.pacote" />
+          <EntitySet Name="pet" EntityType="Self.pet" />
+          <EntitySet Name="porte" EntityType="Self.porte" />
+          <EntitySet Name="servico" EntityType="Self.servico" />
+          <EntitySet Name="tipopet" EntityType="Self.tipopet" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" />
+          <AssociationSet Name="fk_Agendamento_Pacote1" Association="Self.fk_Agendamento_Pacote1">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Agendamento_Pet1" Association="Self.fk_Agendamento_Pet1">
+            <End Role="pet" EntitySet="pet" />
+            <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Agendamento_Servico1" Association="Self.fk_Agendamento_Servico1">
+            <End Role="servico" EntitySet="servico" />
+            <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_MercadoriaOS_Mercadoria1" Association="Self.fk_Item_MercadoriaOS_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="item_mercadoriaos" EntitySet="item_mercadoriaos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_MercadoriaOS_OrdemServico1" Association="Self.fk_Item_MercadoriaOS_OrdemServico1">
+            <End Role="ordemservico" EntitySet="ordemservico" />
+            <End Role="item_mercadoriaos" EntitySet="item_mercadoriaos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Mercadoria1" Association="Self.fk_Item_Pacote_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Pacote1" Association="Self.fk_Item_Pacote_Pacote1">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Servico1" Association="Self.fk_Item_Pacote_Servico1">
+            <End Role="servico" EntitySet="servico" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_PacoteOS_OrdemServico1" Association="Self.fk_Item_PacoteOS_OrdemServico1">
+            <End Role="ordemservico" EntitySet="ordemservico" />
+            <End Role="item_pacoteos" EntitySet="item_pacoteos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_PacoteOS_Pacote1" Association="Self.fk_Item_PacoteOS_Pacote1">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="item_pacoteos" EntitySet="item_pacoteos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_ServicoOS_OrdemServico1" Association="Self.fk_Item_ServicoOS_OrdemServico1">
+            <End Role="ordemservico" EntitySet="ordemservico" />
+            <End Role="item_servicoos" EntitySet="item_servicoos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_ServicoOS_Servico1" Association="Self.fk_Item_ServicoOS_Servico1">
+            <End Role="servico" EntitySet="servico" />
+            <End Role="item_servicoos" EntitySet="item_servicoos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LocalEstoque_Mercadoria1" Association="Self.fk_LocalEstoque_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="localestoque" EntitySet="localestoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pet_Porte1" Association="Self.fk_Pet_Porte1">
+            <End Role="porte" EntitySet="porte" />
+            <End Role="pet" EntitySet="pet" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pet_TipoPet" Association="Self.fk_Pet_TipoPet">
+            <End Role="tipopet" EntitySet="tipopet" />
+            <End Role="pet" EntitySet="pet" />
+          </AssociationSet>
+          <EntitySet Name="parceironegocio" EntityType="mydbModel.parceironegocio" />
+          <AssociationSet Name="fk_Pet_ParceiroNegocio1" Association="mydbModel.fk_Pet_ParceiroNegocio1">
+            <End Role="parceironegocio" EntitySet="parceironegocio" />
+            <End Role="pet" EntitySet="pet" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario_ParceiroNegocio1" Association="mydbModel.fk_Usuario_ParceiroNegocio1">
+            <End Role="parceironegocio" EntitySet="parceironegocio" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="parceironegocio">
+          <Key>
+            <PropertyRef Name="idParceiroNegocio" />
+          </Key>
+          <Property Name="idParceiroNegocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeRazao" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CpfCnpj" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPN" Type="Int32" Nullable="false" />
+          <Property Name="Logradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contato" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ativo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pet" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="parceironegocio" ToRole="pet" />
+          <NavigationProperty Name="usuario" Relationship="mydbModel.fk_Usuario_ParceiroNegocio1" FromRole="parceironegocio" ToRole="usuario" />
+        </EntityType>
+        <Association Name="fk_Pet_ParceiroNegocio1">
+          <End Type="mydbModel.parceironegocio" Role="parceironegocio" Multiplicity="1" />
+          <End Type="mydbModel.pet" Role="pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parceironegocio">
+              <PropertyRef Name="idParceiroNegocio" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario_ParceiroNegocio1">
+          <End Type="mydbModel.parceironegocio" Role="parceironegocio" Multiplicity="1" />
+          <End Type="mydbModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parceironegocio">
+              <PropertyRef Name="idParceiroNegocio" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mydbModelStoreContainer" CdmEntityContainer="banco">
+          <EntitySetMapping Name="agendamento">
+            <EntityTypeMapping TypeName="mydbModel.agendamento">
+              <MappingFragment StoreEntitySet="agendamento">
+                <ScalarProperty Name="idAgendamento" ColumnName="idAgendamento" />
+                <ScalarProperty Name="inicio" ColumnName="inicio" />
+                <ScalarProperty Name="Final" ColumnName="Final" />
+                <ScalarProperty Name="idPet" ColumnName="idPet" />
+                <ScalarProperty Name="idServico" ColumnName="idServico" />
+                <ScalarProperty Name="idPacote" ColumnName="idPacote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_mercadoriaos">
+            <EntityTypeMapping TypeName="mydbModel.item_mercadoriaos">
+              <MappingFragment StoreEntitySet="item_mercadoriaos">
+                <ScalarProperty Name="idItem" ColumnName="idItem" />
+                <ScalarProperty Name="QtdItem" ColumnName="QtdItem" />
+                <ScalarProperty Name="Desconto" ColumnName="Desconto" />
+                <ScalarProperty Name="Acrescimo" ColumnName="Acrescimo" />
+                <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
+                <ScalarProperty Name="idMercadoria" ColumnName="idMercadoria" />
+                <ScalarProperty Name="idOrdemServico" ColumnName="idOrdemServico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_pacote">
+            <EntityTypeMapping TypeName="mydbModel.item_pacote">
+              <MappingFragment StoreEntitySet="item_pacote">
+                <ScalarProperty Name="idItem_Pacote" ColumnName="idItem_Pacote" />
+                <ScalarProperty Name="QtdItem" ColumnName="QtdItem" />
+                <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+                <ScalarProperty Name="idPacote" ColumnName="idPacote" />
+                <ScalarProperty Name="idMercadoria" ColumnName="idMercadoria" />
+                <ScalarProperty Name="idServico" ColumnName="idServico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_pacoteos">
+            <EntityTypeMapping TypeName="mydbModel.item_pacoteos">
+              <MappingFragment StoreEntitySet="item_pacoteos">
+                <ScalarProperty Name="idItem_PacoteOS" ColumnName="idItem_PacoteOS" />
+                <ScalarProperty Name="QtdItem" ColumnName="QtdItem" />
+                <ScalarProperty Name="Desconto" ColumnName="Desconto" />
+                <ScalarProperty Name="Acrescimo" ColumnName="Acrescimo" />
+                <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
+                <ScalarProperty Name="idPacote" ColumnName="idPacote" />
+                <ScalarProperty Name="idOrdemServico" ColumnName="idOrdemServico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_servicoos">
+            <EntityTypeMapping TypeName="mydbModel.item_servicoos">
+              <MappingFragment StoreEntitySet="item_servicoos">
+                <ScalarProperty Name="idItem" ColumnName="idItem" />
+                <ScalarProperty Name="QtdItem" ColumnName="QtdItem" />
+                <ScalarProperty Name="Desconto" ColumnName="Desconto" />
+                <ScalarProperty Name="Acrescimo" ColumnName="Acrescimo" />
+                <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
+                <ScalarProperty Name="idServico" ColumnName="idServico" />
+                <ScalarProperty Name="idOrdemServico" ColumnName="idOrdemServico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localestoque">
+            <EntityTypeMapping TypeName="mydbModel.localestoque">
+              <MappingFragment StoreEntitySet="localestoque">
+                <ScalarProperty Name="idLocalEstoque" ColumnName="idLocalEstoque" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="Mercadoria_idMercadoria" ColumnName="Mercadoria_idMercadoria" />
+                <ScalarProperty Name="EntradaSaida" ColumnName="EntradaSaida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mercadoria">
+            <EntityTypeMapping TypeName="mydbModel.mercadoria">
+              <MappingFragment StoreEntitySet="mercadoria">
+                <ScalarProperty Name="idMercadoria" ColumnName="idMercadoria" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="CodBarras" ColumnName="CodBarras" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordemservico">
+            <EntityTypeMapping TypeName="mydbModel.ordemservico">
+              <MappingFragment StoreEntitySet="ordemservico">
+                <ScalarProperty Name="idOrdemServico" ColumnName="idOrdemServico" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="NomeCliente" ColumnName="NomeCliente" />
+                <ScalarProperty Name="NomePET" ColumnName="NomePET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pacote">
+            <EntityTypeMapping TypeName="mydbModel.pacote">
+              <MappingFragment StoreEntitySet="pacote">
+                <ScalarProperty Name="idPacote" ColumnName="idPacote" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pet">
+            <EntityTypeMapping TypeName="mydbModel.pet">
+              <MappingFragment StoreEntitySet="pet">
+                <ScalarProperty Name="idPet" ColumnName="idPet" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Idade" ColumnName="Idade" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="idPN" ColumnName="idPN" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Castrado" ColumnName="Castrado" />
+                <ScalarProperty Name="dtNascimento" ColumnName="dtNascimento" />
+                <ScalarProperty Name="idPorte" ColumnName="idPorte" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="porte">
+            <EntityTypeMapping TypeName="mydbModel.porte">
+              <MappingFragment StoreEntitySet="porte">
+                <ScalarProperty Name="idPorte" ColumnName="idPorte" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="servico">
+            <EntityTypeMapping TypeName="mydbModel.servico">
+              <MappingFragment StoreEntitySet="servico">
+                <ScalarProperty Name="idServico" ColumnName="idServico" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipopet">
+            <EntityTypeMapping TypeName="mydbModel.tipopet">
+              <MappingFragment StoreEntitySet="tipopet">
+                <ScalarProperty Name="idTipoPet" ColumnName="idTipoPet" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="mydbModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="idPN" ColumnName="idPN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parceironegocio">
+            <EntityTypeMapping TypeName="mydbModel.parceironegocio">
+              <MappingFragment StoreEntitySet="parceironegocio">
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Contato" ColumnName="Contato" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="TipoPN" ColumnName="TipoPN" />
+                <ScalarProperty Name="CpfCnpj" ColumnName="CpfCnpj" />
+                <ScalarProperty Name="NomeRazao" ColumnName="NomeRazao" />
+                <ScalarProperty Name="idParceiroNegocio" ColumnName="idParceiroNegocio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
