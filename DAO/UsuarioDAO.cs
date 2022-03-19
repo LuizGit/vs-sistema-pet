@@ -34,5 +34,26 @@ namespace DAO
 
             objBanco.SaveChanges();
         }
+        public List<UsuarioPNVO> CarrgarUsuariosCadastrados()
+        {
+            banco objBanco = new banco();
+            List<UsuarioPNVO> lstRetorno = new List<UsuarioPNVO>();
+            List<usuario> lstConsulta = objBanco.usuario.Include("parceironegocio").ToList();
+
+            for (int i = 0; i < lstConsulta.Count(); i++)
+            {
+
+                UsuarioPNVO objUPN = new UsuarioPNVO();
+
+                objUPN.Id = lstConsulta[i].idUsuario;
+                objUPN.Login = lstConsulta[1].Login;
+                objUPN.IdPN = lstConsulta[i].parceironegocio.idParceiroNegocio;
+                objUPN.NomeRazaoPN = lstConsulta[i].parceironegocio.NomeRazao;
+
+                lstRetorno.Add(objUPN);
+
+            }
+            return lstRetorno;
+        }
     }
 }

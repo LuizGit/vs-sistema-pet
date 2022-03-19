@@ -20,10 +20,12 @@ namespace SistemaPET
 
         private void fmrUsuario_Load(object sender, EventArgs e)
         {
+            CarregarCombos();
+            CarregarDGVUsuarios();
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
-
-            CarregarCombos();
+            cbmParceiroNegocio.SelectedIndex = -1;
+            
         }
         private void CarregarCombos()
         {
@@ -85,6 +87,21 @@ namespace SistemaPET
         {
             Util.LimparCamposGenerico(gpbDados);
             
+        }
+        public void CarregarDGVUsuarios()
+        {
+            UsuarioDAO objDao = new UsuarioDAO();
+            List<UsuarioPNVO> lstConsulta = objDao.CarrgarUsuariosCadastrados();
+
+            dgvUsuarios.DataSource = lstConsulta;
+
+            Util.VisibilidadeColunaGrid(dgvUsuarios, "IdPN", false);
+
+
+            Util.HeaderColunaGrid(dgvUsuarios, "Id", "Identificador");
+            Util.HeaderColunaGrid(dgvUsuarios, "Login", "Login");
+            Util.HeaderColunaGrid(dgvUsuarios, "NomeRazaoPN", "Nome do Usuario");
+
         }
     }
 }
