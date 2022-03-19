@@ -63,5 +63,13 @@ namespace DAO
 
             return lstRetorno;
         }
+        public List<parceironegocio> PesquisarParceiroUsuario()
+        {
+            banco objBanco = new banco();
+
+            List<parceironegocio> lstRetorno = objBanco.parceironegocio.Where(p => p.Ativo == 1 && p.TipoPN == 0).ToList();
+
+            return lstRetorno;
+        }
     }
 }

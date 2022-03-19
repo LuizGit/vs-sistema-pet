@@ -72,6 +72,12 @@
     <Compile Include="fmrPrincipal.Designer.cs">
       <DependentUpon>fmrPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmrUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrUsuario.Designer.cs">
+      <DependentUpon>fmrUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCadastroParceiroNegocio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     <Compile Include="Util.cs" />
     <EmbeddedResource Include="fmrPrincipal.resx">
       <DependentUpon>fmrPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrUsuario.resx">
+      <DependentUpon>fmrUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroParceiroNegocio.resx">
       <DependentUpon>frmCadastroParceiroNegocio.cs</DependentUpon>

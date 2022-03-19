@@ -28,5 +28,11 @@ namespace SistemaPET
             Login f = new Login();
             f.Close();
         }
+
+        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmrUsuario f = new fmrUsuario();
+            f.ShowDialog();
+        }
     }
 }
