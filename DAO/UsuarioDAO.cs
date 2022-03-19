@@ -26,5 +26,13 @@ namespace DAO
             }
             return ret;
         }
+        public void CadastrarUsuario(usuario usuario)
+        {
+            banco objBanco = new banco();
+
+            objBanco.AddTousuario(usuario);
+
+            objBanco.SaveChanges();
+        }
     }
 }

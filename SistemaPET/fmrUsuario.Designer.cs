@@ -30,6 +30,8 @@ namespace SistemaPET
         private void InitializeComponent()
         {
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.cbmParceiroNegocio = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -39,8 +41,6 @@ namespace SistemaPET
             this.lblUsuario = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbmParceiroNegocio = new System.Windows.Forms.ComboBox();
             this.gpbDados.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -63,6 +63,23 @@ namespace SistemaPET
             this.gpbDados.TabIndex = 0;
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Dados";
+            // 
+            // cbmParceiroNegocio
+            // 
+            this.cbmParceiroNegocio.FormattingEnabled = true;
+            this.cbmParceiroNegocio.Location = new System.Drawing.Point(126, 80);
+            this.cbmParceiroNegocio.Name = "cbmParceiroNegocio";
+            this.cbmParceiroNegocio.Size = new System.Drawing.Size(263, 21);
+            this.cbmParceiroNegocio.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(53, 82);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Parceiro:";
             // 
             // btnExcluir
             // 
@@ -90,6 +107,7 @@ namespace SistemaPET
             this.btnCadastrar.TabIndex = 11;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // txtSenha
             // 
@@ -140,23 +158,6 @@ namespace SistemaPET
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(429, 211);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 82);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Parceiro:";
-            // 
-            // cbmParceiroNegocio
-            // 
-            this.cbmParceiroNegocio.FormattingEnabled = true;
-            this.cbmParceiroNegocio.Location = new System.Drawing.Point(126, 80);
-            this.cbmParceiroNegocio.Name = "cbmParceiroNegocio";
-            this.cbmParceiroNegocio.Size = new System.Drawing.Size(263, 21);
-            this.cbmParceiroNegocio.TabIndex = 15;
             // 
             // fmrUsuario
             // 
