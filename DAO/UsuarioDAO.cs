@@ -56,5 +56,27 @@ namespace DAO
             }
             return lstRetorno;
         }
+        public void AletarUsuario(usuario objUsuario)
+        {
+            banco objBanco = new banco();
+
+            usuario objAlterar = objBanco.usuario.Where(u => u.idUsuario == objUsuario.idUsuario).FirstOrDefault();
+
+            objAlterar.Login = objUsuario.Login;
+            objAlterar.Senha = objUsuario.Senha;
+            objAlterar.idPN = objUsuario.idPN;
+
+            objBanco.SaveChanges();
+        }
+        public void ExcluirUsuario(int id)
+        {
+            banco objBanco = new banco();
+
+            usuario objDeletar = objBanco.usuario.Where(u => u.idUsuario == id).FirstOrDefault();
+
+            objBanco.DeleteObject(objDeletar);
+
+            objBanco.SaveChanges();
+        }
     }
 }

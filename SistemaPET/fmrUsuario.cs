@@ -24,6 +24,7 @@ namespace SistemaPET
             CarregarDGVUsuarios();
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
+            btnCancelar.Visible = false;
             cbmParceiroNegocio.SelectedIndex = -1;
             
         }
@@ -121,7 +122,7 @@ namespace SistemaPET
                 btnCadastrar.Enabled = false;
                 btnAlterar.Enabled = true;
                 btnExcluir.Enabled = true;
-                btnCancelar.Enabled = true;
+                btnCancelar.Visible = true;
 
                 dgvUsuarios.Enabled = false;
             }
@@ -134,9 +135,74 @@ namespace SistemaPET
             btnCadastrar.Enabled = true;
             btnAlterar.Enabled = false;
             btnExcluir.Enabled = false;
-            btnCancelar.Enabled = false;
+            btnCancelar.Visible = false;
 
             dgvUsuarios.Enabled = true;
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampos())
+            {
+                UsuarioDAO objDAO = new UsuarioDAO();
+                usuario objUsuario = new usuario();
+
+                objUsuario.idUsuario = Convert.ToInt32(txtId.Text.Trim());
+                objUsuario.Login = txtUsuario.Text.Trim();
+                objUsuario.Senha = txtSenha.Text.Trim();
+                objUsuario.idPN = Convert.ToInt32(cbmParceiroNegocio.SelectedValue);
+
+                try
+                {
+                    objDAO.AletarUsuario(objUsuario);
+                    Util.ExibirMsg(Util.TipoMsg.Sucesso);
+                    LimparCampos();
+                    CarregarDGVUsuarios();
+                    CarregarCombos();
+                    btnCadastrar.Enabled = true;
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    btnCancelar.Visible = false;
+
+                    dgvUsuarios.Enabled = true;
+
+                }
+                catch 
+                {
+
+                    Util.ExibirMsg(Util.TipoMsg.Erro);
+                }
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text.Trim() != "")
+            {
+                UsuarioDAO objDao = new UsuarioDAO();
+
+                int id = Convert.ToInt32(txtId.Text);
+
+                try
+                {
+                    objDao.ExcluirUsuario(id);
+                    Util.ExibirMsg(Util.TipoMsg.Sucesso);
+                    LimparCampos();
+                    CarregarDGVUsuarios();
+                    CarregarCombos();
+                    btnCadastrar.Enabled = true;
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    btnCancelar.Visible = false;
+
+                    dgvUsuarios.Enabled = true;
+                }
+                catch 
+                {
+
+                    Util.ExibirMsg(Util.TipoMsg.ErroExclusao);
+                }
+            }
         }
     }
 }
