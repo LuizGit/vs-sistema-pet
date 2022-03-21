@@ -12,5 +12,6 @@ namespace DAO
         public string Login { get; set; }
         public int IdPN { get; set; }
         public string NomeRazaoPN { get; set; }
+        public string Senha { get; set; }
     }
 }

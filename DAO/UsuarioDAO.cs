@@ -46,9 +46,10 @@ namespace DAO
                 UsuarioPNVO objUPN = new UsuarioPNVO();
 
                 objUPN.Id = lstConsulta[i].idUsuario;
-                objUPN.Login = lstConsulta[1].Login;
+                objUPN.Login = lstConsulta[i].Login;
                 objUPN.IdPN = lstConsulta[i].parceironegocio.idParceiroNegocio;
                 objUPN.NomeRazaoPN = lstConsulta[i].parceironegocio.NomeRazao;
+                objUPN.Senha = lstConsulta[i].Senha;
 
                 lstRetorno.Add(objUPN);
 

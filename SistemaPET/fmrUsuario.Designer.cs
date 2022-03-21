@@ -30,6 +30,8 @@ namespace SistemaPET
         private void InitializeComponent()
         {
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.cbmParceiroNegocio = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -48,6 +50,8 @@ namespace SistemaPET
             // 
             // gpbDados
             // 
+            this.gpbDados.Controls.Add(this.btnCancelar);
+            this.gpbDados.Controls.Add(this.txtId);
             this.gpbDados.Controls.Add(this.cbmParceiroNegocio);
             this.gpbDados.Controls.Add(this.label1);
             this.gpbDados.Controls.Add(this.btnExcluir);
@@ -63,6 +67,24 @@ namespace SistemaPET
             this.gpbDados.TabIndex = 0;
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Dados";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(266, 154);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(383, 19);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(49, 20);
+            this.txtId.TabIndex = 16;
+            this.txtId.Visible = false;
             // 
             // cbmParceiroNegocio
             // 
@@ -83,7 +105,7 @@ namespace SistemaPET
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(89, 145);
+            this.btnExcluir.Location = new System.Drawing.Point(101, 116);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 23);
             this.btnExcluir.TabIndex = 13;
@@ -92,7 +114,7 @@ namespace SistemaPET
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(202, 145);
+            this.btnAlterar.Location = new System.Drawing.Point(214, 116);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
             this.btnAlterar.TabIndex = 12;
@@ -101,7 +123,7 @@ namespace SistemaPET
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(314, 145);
+            this.btnCadastrar.Location = new System.Drawing.Point(326, 116);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 11;
@@ -160,6 +182,7 @@ namespace SistemaPET
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(429, 211);
             this.dgvUsuarios.TabIndex = 0;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // fmrUsuario
             // 
@@ -193,5 +216,7 @@ namespace SistemaPET
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.ComboBox cbmParceiroNegocio;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

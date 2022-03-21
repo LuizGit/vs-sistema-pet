@@ -96,12 +96,47 @@ namespace SistemaPET
             dgvUsuarios.DataSource = lstConsulta;
 
             Util.VisibilidadeColunaGrid(dgvUsuarios, "IdPN", false);
+            Util.VisibilidadeColunaGrid(dgvUsuarios, "Senha", false);
 
 
             Util.HeaderColunaGrid(dgvUsuarios, "Id", "Identificador");
             Util.HeaderColunaGrid(dgvUsuarios, "Login", "Login");
             Util.HeaderColunaGrid(dgvUsuarios, "NomeRazaoPN", "Nome do Usuario");
 
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUsuarios.RowCount > 0)
+            {
+                UsuarioPNVO objUPN = (UsuarioPNVO)dgvUsuarios.CurrentRow.DataBoundItem;
+
+                //usuario objUPN = (usuario)dgvUsuarios.CurrentRow.DataBoundItem;
+
+                txtId.Text = objUPN.Id.ToString();
+                txtUsuario.Text = objUPN.Login;
+                txtSenha.Text = objUPN.Senha;
+                cbmParceiroNegocio.SelectedValue = objUPN.IdPN;
+
+                btnCadastrar.Enabled = false;
+                btnAlterar.Enabled = true;
+                btnExcluir.Enabled = true;
+                btnCancelar.Enabled = true;
+
+                dgvUsuarios.Enabled = false;
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+
+            btnCadastrar.Enabled = true;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnCancelar.Enabled = false;
+
+            dgvUsuarios.Enabled = true;
         }
     }
 }
