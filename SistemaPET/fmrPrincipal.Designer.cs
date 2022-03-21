@@ -69,6 +69,7 @@ namespace SistemaPET
             this.pETToolStripMenuItem.Name = "pETToolStripMenuItem";
             this.pETToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pETToolStripMenuItem.Text = "PET";
+            this.pETToolStripMenuItem.Click += new System.EventHandler(this.pETToolStripMenuItem_Click);
             // 
             // usuarioToolStripMenuItem
             // 

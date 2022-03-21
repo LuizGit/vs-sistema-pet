@@ -84,6 +84,12 @@
     <Compile Include="frmCadastroParceiroNegocio.Designer.cs">
       <DependentUpon>frmCadastroParceiroNegocio.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCadastroPET.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroPET.Designer.cs">
+      <DependentUpon>frmCadastroPET.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroParceiroNegocio.resx">
       <DependentUpon>frmCadastroParceiroNegocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroPET.resx">
+      <DependentUpon>frmCadastroPET.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

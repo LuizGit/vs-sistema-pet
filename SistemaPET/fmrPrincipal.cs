@@ -34,5 +34,11 @@ namespace SistemaPET
             fmrUsuario f = new fmrUsuario();
             f.ShowDialog();
         }
+
+        private void pETToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastroPET f = new frmCadastroPET();
+            f.ShowDialog();
+        }
     }
 }
