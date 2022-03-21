@@ -73,7 +73,11 @@
     </Compile>
     <Compile Include="ParceiroNegocioDAO.cs" />
     <Compile Include="ParceiroVO.cs" />
+    <Compile Include="PetDAO.cs" />
+    <Compile Include="PetVO.cs" />
+    <Compile Include="PorteDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoPetDAO.cs" />
     <Compile Include="UsuarioDAO.cs" />
     <Compile Include="UsuarioPNVO.cs" />
   </ItemGroup>

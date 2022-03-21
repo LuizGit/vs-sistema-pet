@@ -51,10 +51,10 @@ namespace SistemaPET
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPesquisaPet = new System.Windows.Forms.DataGridView();
             this.gpbDados.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisaPet)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbDados
@@ -260,7 +260,7 @@ namespace SistemaPET
             // 
             // gpbPesquisa
             // 
-            this.gpbPesquisa.Controls.Add(this.dataGridView1);
+            this.gpbPesquisa.Controls.Add(this.dgvPesquisaPet);
             this.gpbPesquisa.Location = new System.Drawing.Point(445, 7);
             this.gpbPesquisa.Name = "gpbPesquisa";
             this.gpbPesquisa.Size = new System.Drawing.Size(502, 487);
@@ -268,13 +268,16 @@ namespace SistemaPET
             this.gpbPesquisa.TabStop = false;
             this.gpbPesquisa.Text = "Cadastrados";
             // 
-            // dataGridView1
+            // dgvPesquisaPet
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 116);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(492, 364);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvPesquisaPet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPesquisaPet.Location = new System.Drawing.Point(9, 116);
+            this.dgvPesquisaPet.MultiSelect = false;
+            this.dgvPesquisaPet.Name = "dgvPesquisaPet";
+            this.dgvPesquisaPet.ReadOnly = true;
+            this.dgvPesquisaPet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPesquisaPet.Size = new System.Drawing.Size(492, 364);
+            this.dgvPesquisaPet.TabIndex = 0;
             // 
             // frmCadastroPET
             // 
@@ -289,7 +292,7 @@ namespace SistemaPET
             this.gpbDados.ResumeLayout(false);
             this.gpbDados.PerformLayout();
             this.gpbPesquisa.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisaPet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -318,6 +321,6 @@ namespace SistemaPET
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.GroupBox gpbPesquisa;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPesquisaPet;
     }
 }
