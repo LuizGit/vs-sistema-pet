@@ -51,6 +51,7 @@ namespace SistemaPET
                     objDao.CadastrarUsuario(objUsuario);
                     Util.ExibirMsg(Util.TipoMsg.Sucesso);
                     LimparCampos();
+                    CarregarDGVUsuarios();
                 }
                 catch 
                 {
