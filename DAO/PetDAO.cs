@@ -37,5 +37,11 @@ namespace DAO
 
             return lstRetorno;
         }
+        public void CadastrarPet(pet objPet)
+        {
+            banco objBanco = new banco();
+            objBanco.AddTopet(objPet);
+            objBanco.SaveChanges();
+        }
     }
 }

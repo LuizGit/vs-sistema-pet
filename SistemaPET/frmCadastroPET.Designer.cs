@@ -42,7 +42,7 @@ namespace SistemaPET
             this.lblPelagem = new System.Windows.Forms.Label();
             this.txtRaca = new System.Windows.Forms.TextBox();
             this.lblRaca = new System.Windows.Forms.Label();
-            this.cbm = new System.Windows.Forms.ComboBox();
+            this.cbmCastrado = new System.Windows.Forms.ComboBox();
             this.lblCastrado = new System.Windows.Forms.Label();
             this.cbmSexo = new System.Windows.Forms.ComboBox();
             this.lblSexo = new System.Windows.Forms.Label();
@@ -52,13 +52,28 @@ namespace SistemaPET
             this.lblNome = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
             this.dgvPesquisaPet = new System.Windows.Forms.DataGridView();
+            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblIdade = new System.Windows.Forms.Label();
+            this.lblAnos = new System.Windows.Forms.Label();
+            this.nudIdade = new System.Windows.Forms.NumericUpDown();
             this.gpbDados.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisaPet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIdade)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbDados
             // 
+            this.gpbDados.Controls.Add(this.nudIdade);
+            this.gpbDados.Controls.Add(this.lblAnos);
+            this.gpbDados.Controls.Add(this.lblIdade);
+            this.gpbDados.Controls.Add(this.btnCancelar);
+            this.gpbDados.Controls.Add(this.btnExcluir);
+            this.gpbDados.Controls.Add(this.btnAlterar);
+            this.gpbDados.Controls.Add(this.btnCadastrar);
             this.gpbDados.Controls.Add(this.txtObs);
             this.gpbDados.Controls.Add(this.lblObs);
             this.gpbDados.Controls.Add(this.cbmTutor);
@@ -71,7 +86,7 @@ namespace SistemaPET
             this.gpbDados.Controls.Add(this.lblPelagem);
             this.gpbDados.Controls.Add(this.txtRaca);
             this.gpbDados.Controls.Add(this.lblRaca);
-            this.gpbDados.Controls.Add(this.cbm);
+            this.gpbDados.Controls.Add(this.cbmCastrado);
             this.gpbDados.Controls.Add(this.lblCastrado);
             this.gpbDados.Controls.Add(this.cbmSexo);
             this.gpbDados.Controls.Add(this.lblSexo);
@@ -186,16 +201,16 @@ namespace SistemaPET
             this.lblRaca.TabIndex = 28;
             this.lblRaca.Text = "Raça:";
             // 
-            // cbm
+            // cbmCastrado
             // 
-            this.cbm.FormattingEnabled = true;
-            this.cbm.Items.AddRange(new object[] {
+            this.cbmCastrado.FormattingEnabled = true;
+            this.cbmCastrado.Items.AddRange(new object[] {
             "Sim",
             "Não"});
-            this.cbm.Location = new System.Drawing.Point(268, 102);
-            this.cbm.Name = "cbm";
-            this.cbm.Size = new System.Drawing.Size(73, 21);
-            this.cbm.TabIndex = 27;
+            this.cbmCastrado.Location = new System.Drawing.Point(268, 102);
+            this.cbmCastrado.Name = "cbmCastrado";
+            this.cbmCastrado.Size = new System.Drawing.Size(73, 21);
+            this.cbmCastrado.TabIndex = 27;
             // 
             // lblCastrado
             // 
@@ -279,6 +294,68 @@ namespace SistemaPET
             this.dgvPesquisaPet.Size = new System.Drawing.Size(492, 364);
             this.dgvPesquisaPet.TabIndex = 0;
             // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Location = new System.Drawing.Point(304, 408);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCadastrar.TabIndex = 40;
+            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(213, 408);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterar.TabIndex = 41;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(119, 408);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 42;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(232, 448);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 43;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // lblIdade
+            // 
+            this.lblIdade.AutoSize = true;
+            this.lblIdade.Location = new System.Drawing.Point(200, 227);
+            this.lblIdade.Name = "lblIdade";
+            this.lblIdade.Size = new System.Drawing.Size(37, 13);
+            this.lblIdade.TabIndex = 44;
+            this.lblIdade.Text = "Idade:";
+            // 
+            // lblAnos
+            // 
+            this.lblAnos.AutoSize = true;
+            this.lblAnos.Location = new System.Drawing.Point(271, 227);
+            this.lblAnos.Name = "lblAnos";
+            this.lblAnos.Size = new System.Drawing.Size(33, 13);
+            this.lblAnos.TabIndex = 46;
+            this.lblAnos.Text = "anos.";
+            // 
+            // nudIdade
+            // 
+            this.nudIdade.Location = new System.Drawing.Point(237, 225);
+            this.nudIdade.Name = "nudIdade";
+            this.nudIdade.Size = new System.Drawing.Size(35, 20);
+            this.nudIdade.TabIndex = 47;
+            // 
             // frmCadastroPET
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,6 +370,7 @@ namespace SistemaPET
             this.gpbDados.PerformLayout();
             this.gpbPesquisa.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisaPet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIdade)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -312,7 +390,7 @@ namespace SistemaPET
         private System.Windows.Forms.Label lblPelagem;
         private System.Windows.Forms.TextBox txtRaca;
         private System.Windows.Forms.Label lblRaca;
-        private System.Windows.Forms.ComboBox cbm;
+        private System.Windows.Forms.ComboBox cbmCastrado;
         private System.Windows.Forms.Label lblCastrado;
         private System.Windows.Forms.ComboBox cbmSexo;
         private System.Windows.Forms.Label lblSexo;
@@ -322,5 +400,12 @@ namespace SistemaPET
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.GroupBox gpbPesquisa;
         private System.Windows.Forms.DataGridView dgvPesquisaPet;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Label lblAnos;
+        private System.Windows.Forms.Label lblIdade;
+        private System.Windows.Forms.NumericUpDown nudIdade;
     }
 }

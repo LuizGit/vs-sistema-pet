@@ -22,6 +22,15 @@ namespace SistemaPET
         {
             CarregarCombos();
             CarregarDgvPesquisarPet();
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnCancelar.Visible = false;
+
+            cbmCastrado.SelectedIndex = -1;
+            cbmEspecie.SelectedIndex = -1;
+            cbmPorte.SelectedIndex = -1;
+            cbmSexo.SelectedIndex = -1;
+            cbmTutor.SelectedIndex = -1;
         }
         public void CarregarCombos()
         {
@@ -60,5 +69,92 @@ namespace SistemaPET
             Util.HeaderColunaGrid(dgvPesquisaPet, "DescricaoPorte", "Porte");
         }
 
+        private void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampos())
+            {
+                PetDAO objDao = new PetDAO();
+                pet objPet = new pet();
+
+                int Idade = Convert.ToInt32(nudIdade.Value);
+
+                objPet.Nome = txtNome.Text.Trim();
+                objPet.Idade = Idade;
+                objPet.Descricao = txtObs.Text.Trim();
+                objPet.idTipo = Convert.ToInt32(cbmEspecie.SelectedValue);
+                objPet.idPN = Convert.ToInt32(cbmTutor.SelectedValue); ;
+                objPet.Sexo = cbmSexo.SelectedItem.ToString();
+                objPet.Castrado = cbmCastrado.SelectedIndex;
+                objPet.dtNascimento = dtpAniversario.Value;
+                objPet.idPorte = Convert.ToInt32(cbmPorte.SelectedValue);
+
+                try
+                {
+                    objDao.CadastrarPet(objPet);
+                    Util.ExibirMsg(Util.TipoMsg.Sucesso);
+                    LimparCampos();
+                    CarregarDgvPesquisarPet();
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    btnCancelar.Visible = false;
+
+                }
+                catch 
+                {
+
+                    Util.ExibirMsg(Util.TipoMsg.Erro);
+                }
+            }
+        }
+        public bool ValidarCampos()
+        {
+            bool ret = true;
+            string campos = "";
+
+            if (txtNome.Text.Trim() == "")
+            {
+                ret = false;
+                campos += " - Nome do Pet\n";
+            }
+            if (cbmSexo.SelectedIndex == -1)
+            {
+                ret = false;
+                campos += " - Sexo do Pet\n";
+            }
+            if (cbmCastrado.SelectedIndex == -1)
+            {
+                ret = false;
+                campos += " - Castrado, sim ou não?\n";
+            }
+            if (txtRaca.Text.Trim() == "")
+            {
+                ret = false;
+                campos += " - Raça do Pet\n";
+            }
+            if (cbmEspecie.SelectedIndex == -1)
+            {
+                ret = false;
+                campos += " - Especie do Pet\n";
+            }
+            if (cbmPorte.SelectedIndex == -1)
+            {
+                ret = false;
+                campos += " - Porte do Pet\n";
+            }
+            if (cbmTutor.SelectedIndex == -1)
+            {
+                ret = false;
+                campos += " - Tutor do Pet\n";
+            }
+            if (!ret)
+            {
+                Util.ExibirMsg(campos);
+            }
+            return ret;
+        }
+        public void LimparCampos()
+        {
+            Util.LimparCamposGenerico(gpbDados);
+        }
     }
 }
