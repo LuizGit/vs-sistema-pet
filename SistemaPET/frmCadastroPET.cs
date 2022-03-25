@@ -61,6 +61,8 @@ namespace SistemaPET
             Util.VisibilidadeColunaGrid(dgvPesquisaPet, "IdPorte", false);
             Util.VisibilidadeColunaGrid(dgvPesquisaPet, "DtNascimento", false);
             Util.VisibilidadeColunaGrid(dgvPesquisaPet, "Castrado", false);
+            Util.VisibilidadeColunaGrid(dgvPesquisaPet, "Pelagem", false);
+            Util.VisibilidadeColunaGrid(dgvPesquisaPet, "Raca", false);
 
             Util.HeaderColunaGrid(dgvPesquisaPet, "Nome", "Nome");
             Util.HeaderColunaGrid(dgvPesquisaPet, "Sexo", "Sexo");
@@ -87,6 +89,7 @@ namespace SistemaPET
                 objPet.Castrado = cbmCastrado.SelectedIndex;
                 objPet.dtNascimento = dtpAniversario.Value;
                 objPet.idPorte = Convert.ToInt32(cbmPorte.SelectedValue);
+                objPet.pelagem = txtPelagem.Text.Trim();
 
                 try
                 {
@@ -155,6 +158,39 @@ namespace SistemaPET
         public void LimparCampos()
         {
             Util.LimparCamposGenerico(gpbDados);
+            nudIdade.Value = 0;
+            dtpAniversario.Value = DateTime.Now;
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvPesquisaPet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPesquisaPet.RowCount > 0)
+            {
+                PetVO objPet = (PetVO)dgvPesquisaPet.CurrentRow.DataBoundItem;
+
+                txtId.Text = objPet.Id.ToString();
+                txtNome.Text = objPet.Nome;
+                txtObs.Text = objPet.Descricao;
+                txtPelagem.Text = objPet.Pelagem;
+                txtRaca.Text = objPet.Raca;
+                cbmCastrado.SelectedIndex = objPet.Castrado;
+                cbmEspecie.SelectedValue = objPet.IdTipo;
+                cbmPorte.SelectedValue = objPet.IdPorte;
+                cbmSexo.SelectedItem = objPet.Sexo;
+                cbmTutor.SelectedValue = objPet.IdPN;
+
+                btnCadastrar.Enabled = false;
+                btnAlterar.Enabled = true;
+                btnExcluir.Enabled = true;
+                btnCancelar.Visible = true;
+
+                dgvPesquisaPet.Enabled = false;
+            }
         }
     }
 }

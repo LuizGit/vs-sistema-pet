@@ -21,6 +21,8 @@ namespace DAO
         public string Sexo { get; set; }
         public int Castrado { get; set; }
         public DateTime DtNascimento { get; set; }
+        public string Pelagem { get; set; }
+        public string Raca { get; set; }
         
     }
 }

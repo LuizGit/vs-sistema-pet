@@ -20,7 +20,6 @@ using System.Xml.Serialization;
 #region Metadados de Relação EDM
 
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Pacote1", "pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.pacote), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Pet1", "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pet), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Servico1", "servico", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.servico), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_MercadoriaOS_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "item_mercadoriaos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_mercadoriaos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_MercadoriaOS_OrdemServico1", "ordemservico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.ordemservico), "item_mercadoriaos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_mercadoriaos), true)]
@@ -32,6 +31,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_ServicoOS_OrdemServico1", "ordemservico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.ordemservico), "item_servicoos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_servicoos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_ServicoOS_Servico1", "servico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.servico), "item_servicoos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_servicoos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_LocalEstoque_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "localestoque", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.localestoque), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Pet1", "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pet), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_Porte1", "porte", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.porte), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_TipoPet", "tipopet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.tipopet), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_ParceiroNegocio1", "parceironegocio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.parceironegocio), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
@@ -234,22 +234,6 @@ namespace DAO
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
         /// </summary>
-        public ObjectSet<pet> pet
-        {
-            get
-            {
-                if ((_pet == null))
-                {
-                    _pet = base.CreateObjectSet<pet>("pet");
-                }
-                return _pet;
-            }
-        }
-        private ObjectSet<pet> _pet;
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
         public ObjectSet<porte> porte
         {
             get
@@ -310,6 +294,22 @@ namespace DAO
             }
         }
         private ObjectSet<usuario> _usuario;
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        public ObjectSet<pet> pet
+        {
+            get
+            {
+                if ((_pet == null))
+                {
+                    _pet = base.CreateObjectSet<pet>("pet");
+                }
+                return _pet;
+            }
+        }
+        private ObjectSet<pet> _pet;
     
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
@@ -404,14 +404,6 @@ namespace DAO
         }
     
         /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet pet. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
-        /// </summary>
-        public void AddTopet(pet pet)
-        {
-            base.AddObject("pet", pet);
-        }
-    
-        /// <summary>
         /// Método preterido para adicionar um novo objeto ao EntitySet porte. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
         /// </summary>
         public void AddToporte(porte porte)
@@ -441,6 +433,14 @@ namespace DAO
         public void AddTousuario(usuario usuario)
         {
             base.AddObject("usuario", usuario);
+        }
+    
+        /// <summary>
+        /// Método preterido para adicionar um novo objeto ao EntitySet pet. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// </summary>
+        public void AddTopet(pet pet)
+        {
+            base.AddObject("pet", pet);
         }
     
         /// <summary>
@@ -685,44 +685,6 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Agendamento_Pet1", "pet")]
-        public pet pet
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet").Value = value;
-            }
-        }
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<pet> petReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Agendamento_Servico1", "servico")]
         public servico servico
         {
@@ -751,6 +713,44 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<servico>("mydbModel.fk_Agendamento_Servico1", "servico", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Agendamento_Pet1", "pet")]
+        public pet pet
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet").Value = value;
+            }
+        }
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<pet> petReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<pet>("mydbModel.fk_Agendamento_Pet1", "pet", value);
                 }
             }
         }
@@ -3328,6 +3328,54 @@ namespace DAO
         private global::System.Int32 _idPorte;
         partial void OnidPorteChanging(global::System.Int32 value);
         partial void OnidPorteChanged();
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String pelagem
+        {
+            get
+            {
+                return _pelagem;
+            }
+            set
+            {
+                OnpelagemChanging(value);
+                ReportPropertyChanging("pelagem");
+                _pelagem = StructuralObject.SetValidValue(value, true, "pelagem");
+                ReportPropertyChanged("pelagem");
+                OnpelagemChanged();
+            }
+        }
+        private global::System.String _pelagem;
+        partial void OnpelagemChanging(global::System.String value);
+        partial void OnpelagemChanged();
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String raca
+        {
+            get
+            {
+                return _raca;
+            }
+            set
+            {
+                OnracaChanging(value);
+                ReportPropertyChanging("raca");
+                _raca = StructuralObject.SetValidValue(value, true, "raca");
+                ReportPropertyChanged("raca");
+                OnracaChanged();
+            }
+        }
+        private global::System.String _raca;
+        partial void OnracaChanging(global::System.String value);
+        partial void OnracaChanged();
 
         #endregion
 

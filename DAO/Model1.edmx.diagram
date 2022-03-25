@@ -14,13 +14,11 @@
         <EntityTypeShape EntityType="mydbModel.mercadoria" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.ordemservico" Width="1.5" PointX="5.75" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.pacote" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="mydbModel.pet" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.porte" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.servico" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.tipopet" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.usuario" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
         <AssociationConnector Association="mydbModel.fk_Agendamento_Pacote1" ManuallyRouted="false" />
-        <AssociationConnector Association="mydbModel.fk_Agendamento_Pet1" ManuallyRouted="false" />
         <AssociationConnector Association="mydbModel.fk_Agendamento_Servico1" ManuallyRouted="false" />
         <AssociationConnector Association="mydbModel.fk_Item_MercadoriaOS_Mercadoria1" ManuallyRouted="false" />
         <AssociationConnector Association="mydbModel.fk_Item_MercadoriaOS_OrdemServico1" ManuallyRouted="false" />
@@ -32,12 +30,14 @@
         <AssociationConnector Association="mydbModel.fk_Item_ServicoOS_OrdemServico1" ManuallyRouted="false" />
         <AssociationConnector Association="mydbModel.fk_Item_ServicoOS_Servico1" ManuallyRouted="false" />
         <AssociationConnector Association="mydbModel.fk_LocalEstoque_Mercadoria1" ManuallyRouted="false" />
-        <AssociationConnector Association="mydbModel.fk_Pet_Porte1" ManuallyRouted="false" />
-        <AssociationConnector Association="mydbModel.fk_Pet_TipoPet" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="mydbModel.pet" Width="1.5" PointX="3" PointY="3.75" />
+        <AssociationConnector Association="mydbModel.fk_Agendamento_Pet1" />
+        <AssociationConnector Association="mydbModel.fk_Pet_Porte1" />
+        <AssociationConnector Association="mydbModel.fk_Pet_TipoPet" />
         <EntityTypeShape EntityType="mydbModel.parceironegocio" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="mydbModel.fk_Pet_ParceiroNegocio1" />
         <AssociationConnector Association="mydbModel.fk_Usuario_ParceiroNegocio1" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

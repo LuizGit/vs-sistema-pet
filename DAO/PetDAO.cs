@@ -31,6 +31,8 @@ namespace DAO
                 objPETVO.DtNascimento = Convert.ToDateTime(lstConsulta[i].dtNascimento);
                 objPETVO.IdPorte = lstConsulta[i].porte.idPorte;
                 objPETVO.DescricaoPorte = lstConsulta[i].porte.Descricao;
+                objPETVO.Pelagem = lstConsulta[i].pelagem;
+                objPETVO.Raca = lstConsulta[i].raca;
 
                 lstRetorno.Add(objPETVO);
             }

@@ -128,6 +128,8 @@
           <Property Name="Castrado" Type="int" Nullable="false" />
           <Property Name="dtNascimento" Type="date" />
           <Property Name="idPorte" Type="int" Nullable="false" />
+          <Property Name="pelagem" Type="varchar" MaxLength="45" />
+          <Property Name="raca" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="porte">
           <Key>
@@ -464,8 +466,8 @@
           <Property Name="idServico" Type="Int32" />
           <Property Name="idPacote" Type="Int32" />
           <NavigationProperty Name="pacote" Relationship="Self.fk_Agendamento_Pacote1" FromRole="agendamento" ToRole="pacote" />
-          <NavigationProperty Name="pet" Relationship="Self.fk_Agendamento_Pet1" FromRole="agendamento" ToRole="pet" />
           <NavigationProperty Name="servico" Relationship="Self.fk_Agendamento_Servico1" FromRole="agendamento" ToRole="servico" />
+          <NavigationProperty Name="pet" Relationship="mydbModel.fk_Agendamento_Pet1" FromRole="agendamento" ToRole="pet" />
         </EntityType>
         <EntityType Name="item_mercadoriaos">
           <Key>
@@ -568,32 +570,13 @@
           <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Pacote1" FromRole="pacote" ToRole="item_pacote" />
           <NavigationProperty Name="item_pacoteos" Relationship="Self.fk_Item_PacoteOS_Pacote1" FromRole="pacote" ToRole="item_pacoteos" />
         </EntityType>
-        <EntityType Name="pet">
-          <Key>
-            <PropertyRef Name="idPet" />
-          </Key>
-          <Property Name="idPet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Idade" Type="Int32" />
-          <Property Name="Descricao" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="idTipo" Type="Int32" Nullable="false" />
-          <Property Name="idPN" Type="Int32" Nullable="false" />
-          <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Castrado" Type="Int32" Nullable="false" />
-          <Property Name="dtNascimento" Type="DateTime" />
-          <Property Name="idPorte" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="agendamento" Relationship="Self.fk_Agendamento_Pet1" FromRole="pet" ToRole="agendamento" />
-          <NavigationProperty Name="porte" Relationship="Self.fk_Pet_Porte1" FromRole="pet" ToRole="porte" />
-          <NavigationProperty Name="tipopet" Relationship="Self.fk_Pet_TipoPet" FromRole="pet" ToRole="tipopet" />
-          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="pet" ToRole="parceironegocio" />
-        </EntityType>
         <EntityType Name="porte">
           <Key>
             <PropertyRef Name="idPorte" />
           </Key>
           <Property Name="idPorte" Type="Int32" Nullable="false" />
           <Property Name="Descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="pet" Relationship="Self.fk_Pet_Porte1" FromRole="porte" ToRole="pet" />
+          <NavigationProperty Name="pet" Relationship="mydbModel.fk_Pet_Porte1" FromRole="porte" ToRole="pet" />
         </EntityType>
         <EntityType Name="servico">
           <Key>
@@ -612,7 +595,7 @@
           </Key>
           <Property Name="idTipoPet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="pet" Relationship="Self.fk_Pet_TipoPet" FromRole="tipopet" ToRole="pet" />
+          <NavigationProperty Name="pet" Relationship="mydbModel.fk_Pet_TipoPet" FromRole="tipopet" ToRole="pet" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
@@ -633,18 +616,6 @@
             </Principal>
             <Dependent Role="agendamento">
               <PropertyRef Name="idPacote" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Agendamento_Pet1">
-          <End Role="pet" Type="Self.pet" Multiplicity="1" />
-          <End Role="agendamento" Type="Self.agendamento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pet">
-              <PropertyRef Name="idPet" />
-            </Principal>
-            <Dependent Role="agendamento">
-              <PropertyRef Name="idPet" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -780,30 +751,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Pet_Porte1">
-          <End Role="porte" Type="Self.porte" Multiplicity="1" />
-          <End Role="pet" Type="Self.pet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="porte">
-              <PropertyRef Name="idPorte" />
-            </Principal>
-            <Dependent Role="pet">
-              <PropertyRef Name="idPorte" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Pet_TipoPet">
-          <End Role="tipopet" Type="Self.tipopet" Multiplicity="1" />
-          <End Role="pet" Type="Self.pet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tipopet">
-              <PropertyRef Name="idTipoPet" />
-            </Principal>
-            <Dependent Role="pet">
-              <PropertyRef Name="idTipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="banco" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="agendamento" EntityType="Self.agendamento" />
           <EntitySet Name="item_mercadoriaos" EntityType="Self.item_mercadoriaos" />
@@ -814,17 +761,12 @@
           <EntitySet Name="mercadoria" EntityType="Self.mercadoria" />
           <EntitySet Name="ordemservico" EntityType="Self.ordemservico" />
           <EntitySet Name="pacote" EntityType="Self.pacote" />
-          <EntitySet Name="pet" EntityType="Self.pet" />
           <EntitySet Name="porte" EntityType="Self.porte" />
           <EntitySet Name="servico" EntityType="Self.servico" />
           <EntitySet Name="tipopet" EntityType="Self.tipopet" />
           <EntitySet Name="usuario" EntityType="Self.usuario" />
           <AssociationSet Name="fk_Agendamento_Pacote1" Association="Self.fk_Agendamento_Pacote1">
             <End Role="pacote" EntitySet="pacote" />
-            <End Role="agendamento" EntitySet="agendamento" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Agendamento_Pet1" Association="Self.fk_Agendamento_Pet1">
-            <End Role="pet" EntitySet="pet" />
             <End Role="agendamento" EntitySet="agendamento" />
           </AssociationSet>
           <AssociationSet Name="fk_Agendamento_Servico1" Association="Self.fk_Agendamento_Servico1">
@@ -871,11 +813,16 @@
             <End Role="mercadoria" EntitySet="mercadoria" />
             <End Role="localestoque" EntitySet="localestoque" />
           </AssociationSet>
-          <AssociationSet Name="fk_Pet_Porte1" Association="Self.fk_Pet_Porte1">
+          <EntitySet Name="pet" EntityType="mydbModel.pet" />
+          <AssociationSet Name="fk_Agendamento_Pet1" Association="mydbModel.fk_Agendamento_Pet1">
+            <End Role="pet" EntitySet="pet" />
+            <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pet_Porte1" Association="mydbModel.fk_Pet_Porte1">
             <End Role="porte" EntitySet="porte" />
             <End Role="pet" EntitySet="pet" />
           </AssociationSet>
-          <AssociationSet Name="fk_Pet_TipoPet" Association="Self.fk_Pet_TipoPet">
+          <AssociationSet Name="fk_Pet_TipoPet" Association="mydbModel.fk_Pet_TipoPet">
             <End Role="tipopet" EntitySet="tipopet" />
             <End Role="pet" EntitySet="pet" />
           </AssociationSet>
@@ -888,7 +835,64 @@
             <End Role="parceironegocio" EntitySet="parceironegocio" />
             <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="pet">
+          <Key>
+            <PropertyRef Name="idPet" />
+          </Key>
+          <Property Name="idPet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Idade" Type="Int32" />
+          <Property Name="Descricao" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="idTipo" Type="Int32" Nullable="false" />
+          <Property Name="idPN" Type="Int32" Nullable="false" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Castrado" Type="Int32" Nullable="false" />
+          <Property Name="dtNascimento" Type="DateTime" />
+          <Property Name="idPorte" Type="Int32" Nullable="false" />
+          <Property Name="pelagem" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="raca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="agendamento" Relationship="mydbModel.fk_Agendamento_Pet1" FromRole="pet" ToRole="agendamento" />
+          <NavigationProperty Name="porte" Relationship="mydbModel.fk_Pet_Porte1" FromRole="pet" ToRole="porte" />
+          <NavigationProperty Name="tipopet" Relationship="mydbModel.fk_Pet_TipoPet" FromRole="pet" ToRole="tipopet" />
+          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="pet" ToRole="parceironegocio" />
+        </EntityType>
+        <Association Name="fk_Agendamento_Pet1">
+          <End Type="mydbModel.pet" Role="pet" Multiplicity="1" />
+          <End Type="mydbModel.agendamento" Role="agendamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pet">
+              <PropertyRef Name="idPet" />
+            </Principal>
+            <Dependent Role="agendamento">
+              <PropertyRef Name="idPet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_Porte1">
+          <End Type="mydbModel.porte" Role="porte" Multiplicity="1" />
+          <End Type="mydbModel.pet" Role="pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="porte">
+              <PropertyRef Name="idPorte" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idPorte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_TipoPet">
+          <End Type="mydbModel.tipopet" Role="tipopet" Multiplicity="1" />
+          <End Type="mydbModel.pet" Role="pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipopet">
+              <PropertyRef Name="idTipoPet" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="parceironegocio">
           <Key>
             <PropertyRef Name="idParceiroNegocio" />
@@ -931,7 +935,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1039,22 +1043,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="pet">
-            <EntityTypeMapping TypeName="mydbModel.pet">
-              <MappingFragment StoreEntitySet="pet">
-                <ScalarProperty Name="idPet" ColumnName="idPet" />
-                <ScalarProperty Name="Nome" ColumnName="Nome" />
-                <ScalarProperty Name="Idade" ColumnName="Idade" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
-                <ScalarProperty Name="idPN" ColumnName="idPN" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="Castrado" ColumnName="Castrado" />
-                <ScalarProperty Name="dtNascimento" ColumnName="dtNascimento" />
-                <ScalarProperty Name="idPorte" ColumnName="idPorte" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="porte">
             <EntityTypeMapping TypeName="mydbModel.porte">
               <MappingFragment StoreEntitySet="porte">
@@ -1087,6 +1075,24 @@
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Senha" ColumnName="Senha" />
                 <ScalarProperty Name="idPN" ColumnName="idPN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pet">
+            <EntityTypeMapping TypeName="mydbModel.pet">
+              <MappingFragment StoreEntitySet="pet">
+                <ScalarProperty Name="raca" ColumnName="raca" />
+                <ScalarProperty Name="pelagem" ColumnName="pelagem" />
+                <ScalarProperty Name="idPorte" ColumnName="idPorte" />
+                <ScalarProperty Name="dtNascimento" ColumnName="dtNascimento" />
+                <ScalarProperty Name="Castrado" ColumnName="Castrado" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="idPN" ColumnName="idPN" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="Idade" ColumnName="Idade" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="idPet" ColumnName="idPet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
