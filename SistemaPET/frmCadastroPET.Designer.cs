@@ -30,6 +30,7 @@ namespace SistemaPET
         private void InitializeComponent()
         {
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.nudIdade = new System.Windows.Forms.NumericUpDown();
             this.lblAnos = new System.Windows.Forms.Label();
             this.lblIdade = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@ namespace SistemaPET
             this.lblNome = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
             this.dgvPesquisaPet = new System.Windows.Forms.DataGridView();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.gpbDados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdade)).BeginInit();
             this.gpbPesquisa.SuspendLayout();
@@ -103,6 +103,16 @@ namespace SistemaPET
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Dados Cadastrais";
             // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(18, 446);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(32, 20);
+            this.txtId.TabIndex = 48;
+            this.txtId.Visible = false;
+            // 
             // nudIdade
             // 
             this.nudIdade.Location = new System.Drawing.Point(237, 225);
@@ -136,6 +146,7 @@ namespace SistemaPET
             this.btnCancelar.TabIndex = 43;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnExcluir
             // 
@@ -145,6 +156,7 @@ namespace SistemaPET
             this.btnExcluir.TabIndex = 42;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -359,16 +371,6 @@ namespace SistemaPET
             this.dgvPesquisaPet.Size = new System.Drawing.Size(492, 364);
             this.dgvPesquisaPet.TabIndex = 0;
             this.dgvPesquisaPet.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPesquisaPet_CellClick);
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(18, 446);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(32, 20);
-            this.txtId.TabIndex = 48;
-            this.txtId.Visible = false;
             // 
             // frmCadastroPET
             // 

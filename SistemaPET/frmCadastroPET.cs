@@ -164,7 +164,45 @@ namespace SistemaPET
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            if (ValidarCampos())
+            {
+                PetDAO objDao = new PetDAO();
+                pet objPet = new pet();
 
+                objPet.idPet = Convert.ToInt32(txtId.Text.Trim());
+                objPet.Nome = txtNome.Text.Trim();
+                objPet.Idade = Convert.ToInt32(nudIdade.Value);
+                objPet.Descricao = txtObs.Text.Trim();
+                objPet.pelagem = txtPelagem.Text.Trim();
+                objPet.raca = txtRaca.Text.Trim();
+                objPet.idPN = Convert.ToInt32(cbmTutor.SelectedValue);
+                objPet.Sexo = cbmSexo.SelectedItem.ToString();
+                objPet.idPorte = Convert.ToInt32(cbmPorte.SelectedValue);
+                objPet.idTipo = Convert.ToInt32(cbmEspecie.SelectedValue);
+                objPet.Castrado = cbmCastrado.SelectedIndex;
+                objPet.dtNascimento = dtpAniversario.Value;
+
+                try
+                {
+                    objDao.AlterarPET(objPet);
+                    Util.ExibirMsg(Util.TipoMsg.Sucesso);
+                    LimparCampos();
+                    CarregarCombos();
+                    CarregarDgvPesquisarPet();
+                    btnCadastrar.Enabled = true;
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    btnCancelar.Visible = false;
+
+                    dgvPesquisaPet.Enabled = true;
+
+                }
+                catch 
+                {
+                    Util.ExibirMsg(Util.TipoMsg.Erro);
+                }
+
+            }
         }
 
         private void dgvPesquisaPet_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -174,6 +212,7 @@ namespace SistemaPET
                 PetVO objPet = (PetVO)dgvPesquisaPet.CurrentRow.DataBoundItem;
 
                 txtId.Text = objPet.Id.ToString();
+                nudIdade.Value = objPet.Idade;
                 txtNome.Text = objPet.Nome;
                 txtObs.Text = objPet.Descricao;
                 txtPelagem.Text = objPet.Pelagem;
@@ -190,6 +229,49 @@ namespace SistemaPET
                 btnCancelar.Visible = true;
 
                 dgvPesquisaPet.Enabled = false;
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+            CarregarCombos();
+            CarregarDgvPesquisarPet();
+            btnCadastrar.Enabled = true;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            btnCancelar.Visible = false;
+
+            dgvPesquisaPet.Enabled = true;
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (txtId.Text.Trim() == "")
+            {
+                Util.ExibirMsg("Id do pet a ser deletado não foi informado!");
+            }
+            else
+            {
+                PetDAO objDao = new PetDAO();
+                try
+                {
+                    objDao.ExcluirPet(Convert.ToInt32(txtId.Text.Trim()));
+                    Util.ExibirMsg(Util.TipoMsg.Sucesso);
+                    LimparCampos();
+                    CarregarCombos();
+                    CarregarDgvPesquisarPet();
+                    btnCadastrar.Enabled = true;
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    btnCancelar.Visible = false;
+
+                    dgvPesquisaPet.Enabled = true;
+                }
+                catch 
+                {
+                    Util.ExibirMsg(Util.TipoMsg.Erro);
+                }
             }
         }
     }

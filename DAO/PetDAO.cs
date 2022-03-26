@@ -45,5 +45,33 @@ namespace DAO
             objBanco.AddTopet(objPet);
             objBanco.SaveChanges();
         }
+        public void AlterarPET(pet objPet)
+        {
+            banco objBanco = new banco();
+            pet objAlterar = objBanco.pet.Where(p => p.idPet == objPet.idPet).FirstOrDefault();
+
+            objAlterar.Nome = objPet.Nome;
+            objAlterar.Idade = objPet.Idade;
+            objAlterar.Descricao = objPet.Descricao;
+            objAlterar.idPN = objPet.idPN;
+            objAlterar.idTipo = objPet.idTipo;
+            objAlterar.Sexo = objPet.Sexo;
+            objAlterar.Castrado = objPet.Castrado;
+            objAlterar.dtNascimento = objPet.dtNascimento;
+            objAlterar.idPorte = objPet.idPorte;
+            objAlterar.pelagem = objPet.pelagem;
+            objAlterar.raca = objPet.raca;
+
+            objBanco.SaveChanges();
+        }
+        public void ExcluirPet(int idPet)
+        {
+            banco objBanco = new banco();
+            pet objDeletar = objBanco.pet.Where(p => p.idPet == idPet).FirstOrDefault();
+
+            objBanco.DeleteObject(objDeletar);
+
+            objBanco.SaveChanges();
+        }
     }
 }
