@@ -90,6 +90,7 @@ namespace SistemaPET
                 objPet.dtNascimento = dtpAniversario.Value;
                 objPet.idPorte = Convert.ToInt32(cbmPorte.SelectedValue);
                 objPet.pelagem = txtPelagem.Text.Trim();
+                objPet.raca = txtRaca.Text.Trim();
 
                 try
                 {
