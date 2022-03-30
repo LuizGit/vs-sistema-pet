@@ -37,7 +37,7 @@ namespace SistemaPET
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 329);
             this.Name = "fmrEspecie";
-            this.Text = "fmrEspecie";
+            this.Text = "Tela de Cadastro de Especie";
             this.ResumeLayout(false);
 
         }
