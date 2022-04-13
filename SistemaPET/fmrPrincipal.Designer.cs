@@ -34,6 +34,7 @@ namespace SistemaPET
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.espécieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@ namespace SistemaPET
             // parceiroDeNegocioToolStripMenuItem
             // 
             this.parceiroDeNegocioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.espécieToolStripMenuItem,
             this.cadastroToolStripMenuItem,
             this.pETToolStripMenuItem,
             this.usuarioToolStripMenuItem});
@@ -78,6 +80,13 @@ namespace SistemaPET
             this.usuarioToolStripMenuItem.Text = "Usuario";
             this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
+            // espécieToolStripMenuItem
+            // 
+            this.espécieToolStripMenuItem.Name = "espécieToolStripMenuItem";
+            this.espécieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.espécieToolStripMenuItem.Text = "Espécie";
+            this.espécieToolStripMenuItem.Click += new System.EventHandler(this.espécieToolStripMenuItem_Click);
+            // 
             // fmrPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,5 +113,6 @@ namespace SistemaPET
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pETToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem espécieToolStripMenuItem;
     }
 }

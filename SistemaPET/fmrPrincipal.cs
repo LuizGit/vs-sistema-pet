@@ -40,5 +40,11 @@ namespace SistemaPET
             frmCadastroPET f = new frmCadastroPET();
             f.ShowDialog();
         }
+
+        private void espécieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmrEspecie f = new fmrEspecie();
+            f.ShowDialog();
+        }
     }
 }

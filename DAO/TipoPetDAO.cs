@@ -15,5 +15,17 @@ namespace DAO
 
             return lstRetorno;
         }
+        public void CadastrarEspecie(tipopet objTipo) {
+
+            //Objeto que instancia todas as tabelas da classe referente ao banco.
+            banco objbanco = new banco();
+
+            //INFORMANDO QUAL SERá A A TABELA A TER VALOR INSERIDO.
+            objbanco.AddTotipopet(objTipo);
+
+            //Salva as alterações no banco.
+            objbanco.SaveChanges();
+        
+        }
     }
 }
