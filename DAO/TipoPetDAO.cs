@@ -28,5 +28,33 @@ namespace DAO
             objbanco.SaveChanges();
         
         }
+
+        public void AlterarEspecie (tipopet objAlterar)
+        {
+
+            banco objbanco = new banco();
+
+            tipopet objTipoPet = objbanco.tipopet.Where(t => t.idTipoPet == objAlterar.idTipoPet).FirstOrDefault();
+
+            objTipoPet.Descricao = objAlterar.Descricao;
+
+            objbanco.SaveChanges();
+
+        }
+
+
+        public void ExcluirTipoPet(int idTipoPet)
+        {
+
+            banco ObjBanco = new banco();
+            tipopet objDeletar = ObjBanco.tipopet.Where(p => p.idTipoPet == idTipoPet).FirstOrDefault();
+
+            ObjBanco.DeleteObject(objDeletar);
+
+            ObjBanco.SaveChanges();
+}
+
+
+
     }
 }

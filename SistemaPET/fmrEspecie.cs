@@ -44,6 +44,12 @@ namespace SistemaPET
                     Util.ExibirMsg(Util.TipoMsg.Sucesso);
                     CarregarDgvPesquisaTipoPet();
                     LimparCampos();
+                    btnCadastrar.Enabled = true;
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    BtnCancelar.Enabled = false;
+
+
                 }
                 catch
                 {
@@ -91,6 +97,36 @@ namespace SistemaPET
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (txtIdTipoPet.Text.Trim()== "")
+            {
+
+                Util.ExibirMsg(Util.TipoMsg.Erro);
+            }
+            else
+            {
+                TipoPetDAO objDao = new TipoPetDAO();
+                try
+                {
+                    objDao.ExcluirTipoPet(Convert.ToInt32(txtIdTipoPet.Text.Trim()));
+                    Util.ExibirMsg(Util.TipoMsg.Sucesso);
+                    LimparCampos();
+                    CarregarDgvPesquisaTipoPet();
+                    btnCadastrar.Enabled = true;
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    BtnCancelar.Enabled = false;
+               }
+                catch 
+                {
+                    Util.ExibirMsg(Util.TipoMsg.Erro);
+
+
+                   
+                }
+
+
+            }
+        
 
         }
 
@@ -107,8 +143,56 @@ namespace SistemaPET
 
                 txtIdTipoPet.Text = objTipoPet.idTipoPet.ToString();
                 txtDescricao.Text = objTipoPet.Descricao;
+                btnCadastrar.Enabled = false;
+                btnAlterar.Enabled = true;
+                btnExcluir.Enabled = true;
+                BtnCancelar.Enabled = true;
 
             }
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (ValidarCampos())
+            {
+                TipoPetDAO objDao = new TipoPetDAO();
+                tipopet objAlterar = new tipopet();
+
+
+                objAlterar.Descricao = txtDescricao.Text.Trim();
+                objAlterar.idTipoPet = Convert.ToInt32(txtIdTipoPet.Text.Trim());
+
+                try
+                {
+                    objDao.AlterarEspecie(objAlterar);
+                    Util.ExibirMsg(Util.TipoMsg.Sucesso);
+                    LimparCampos();
+                    CarregarDgvPesquisaTipoPet();
+                    btnCadastrar.Enabled = true;
+                    btnAlterar.Enabled = false;
+                    btnExcluir.Enabled = false;
+                    BtnCancelar.Enabled = false;
+
+                }
+                catch (Exception)
+                {
+                    Util.ExibirMsg(Util.TipoMsg.Erro);
+
+                    throw;
+                }
+
+
+
+            }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+            BtnCancelar.Enabled = false;
+            btnCadastrar.Enabled = true;
         }
     }
 }

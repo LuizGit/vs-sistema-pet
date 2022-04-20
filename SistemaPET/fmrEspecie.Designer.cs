@@ -30,6 +30,7 @@ namespace SistemaPET
         private void InitializeComponent()
         {
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.txtIdTipoPet = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@ namespace SistemaPET
             this.lblDescricao = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
             this.dgvPesquisa = new System.Windows.Forms.DataGridView();
-            this.txtIdTipoPet = new System.Windows.Forms.TextBox();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.gpbDados.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisa)).BeginInit();
@@ -45,6 +46,7 @@ namespace SistemaPET
             // 
             // gpbDados
             // 
+            this.gpbDados.Controls.Add(this.BtnCancelar);
             this.gpbDados.Controls.Add(this.txtIdTipoPet);
             this.gpbDados.Controls.Add(this.txtDescricao);
             this.gpbDados.Controls.Add(this.btnAlterar);
@@ -57,6 +59,15 @@ namespace SistemaPET
             this.gpbDados.TabIndex = 0;
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Dados";
+            // 
+            // txtIdTipoPet
+            // 
+            this.txtIdTipoPet.Enabled = false;
+            this.txtIdTipoPet.Location = new System.Drawing.Point(13, 273);
+            this.txtIdTipoPet.Name = "txtIdTipoPet";
+            this.txtIdTipoPet.Size = new System.Drawing.Size(52, 20);
+            this.txtIdTipoPet.TabIndex = 13;
+            this.txtIdTipoPet.Visible = false;
             // 
             // txtDescricao
             // 
@@ -73,6 +84,7 @@ namespace SistemaPET
             this.btnAlterar.TabIndex = 11;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnExcluir
             // 
@@ -124,14 +136,16 @@ namespace SistemaPET
             this.dgvPesquisa.TabIndex = 0;
             this.dgvPesquisa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPesquisa_CellClick);
             // 
-            // txtIdTipoPet
+            // BtnCancelar
             // 
-            this.txtIdTipoPet.Enabled = false;
-            this.txtIdTipoPet.Location = new System.Drawing.Point(13, 273);
-            this.txtIdTipoPet.Name = "txtIdTipoPet";
-            this.txtIdTipoPet.Size = new System.Drawing.Size(52, 20);
-            this.txtIdTipoPet.TabIndex = 13;
-            this.txtIdTipoPet.Visible = false;
+            this.BtnCancelar.Enabled = false;
+            this.BtnCancelar.Location = new System.Drawing.Point(131, 218);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.BtnCancelar.TabIndex = 14;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // fmrEspecie
             // 
@@ -162,5 +176,6 @@ namespace SistemaPET
         private System.Windows.Forms.GroupBox gpbPesquisa;
         private System.Windows.Forms.DataGridView dgvPesquisa;
         private System.Windows.Forms.TextBox txtIdTipoPet;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }
