@@ -10,7 +10,6 @@
         <EntityTypeShape EntityType="mydbModel.item_pacote" Width="1.5" PointX="11" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.item_pacoteos" Width="1.5" PointX="11" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.item_servicoos" Width="1.5" PointX="8" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="mydbModel.localestoque" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.mercadoria" Width="1.5" PointX="5.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.ordemservico" Width="1.5" PointX="5.75" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="mydbModel.pacote" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
@@ -29,7 +28,6 @@
         <AssociationConnector Association="mydbModel.fk_Item_PacoteOS_Pacote1" ManuallyRouted="false" />
         <AssociationConnector Association="mydbModel.fk_Item_ServicoOS_OrdemServico1" ManuallyRouted="false" />
         <AssociationConnector Association="mydbModel.fk_Item_ServicoOS_Servico1" ManuallyRouted="false" />
-        <AssociationConnector Association="mydbModel.fk_LocalEstoque_Mercadoria1" ManuallyRouted="false" />
         <EntityTypeShape EntityType="mydbModel.pet" Width="1.5" PointX="3" PointY="3.75" />
         <AssociationConnector Association="mydbModel.fk_Agendamento_Pet1" />
         <AssociationConnector Association="mydbModel.fk_Pet_Porte1" />
@@ -37,6 +35,8 @@
         <EntityTypeShape EntityType="mydbModel.parceironegocio" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="mydbModel.fk_Pet_ParceiroNegocio1" />
         <AssociationConnector Association="mydbModel.fk_Usuario_ParceiroNegocio1" />
+        <EntityTypeShape EntityType="mydbModel.localestoque" Width="1.5" PointX="8" PointY="8.625" />
+        <AssociationConnector Association="mydbModel.fk_LocalEstoque_Mercadoria1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

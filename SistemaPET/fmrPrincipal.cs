@@ -52,5 +52,11 @@ namespace SistemaPET
             fmrCadProduto f = new fmrCadProduto();
             f.ShowDialog();
         }
+
+        private void ajusteEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmrAjusteEstoque f = new fmrAjusteEstoque();
+            f.ShowDialog();
+        }
     }
 }

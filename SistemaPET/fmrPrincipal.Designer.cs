@@ -31,12 +31,13 @@ namespace SistemaPET
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.parceiroDeNegocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.espécieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.espécieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosPacotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mercadoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajusteEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +63,13 @@ namespace SistemaPET
             this.parceiroDeNegocioToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.parceiroDeNegocioToolStripMenuItem.Text = "Cadastro";
             // 
+            // espécieToolStripMenuItem
+            // 
+            this.espécieToolStripMenuItem.Name = "espécieToolStripMenuItem";
+            this.espécieToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.espécieToolStripMenuItem.Text = "Espécie";
+            this.espécieToolStripMenuItem.Click += new System.EventHandler(this.espécieToolStripMenuItem_Click);
+            // 
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
@@ -83,16 +91,10 @@ namespace SistemaPET
             this.usuarioToolStripMenuItem.Text = "Usuario";
             this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
-            // espécieToolStripMenuItem
-            // 
-            this.espécieToolStripMenuItem.Name = "espécieToolStripMenuItem";
-            this.espécieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.espécieToolStripMenuItem.Text = "Espécie";
-            this.espécieToolStripMenuItem.Click += new System.EventHandler(this.espécieToolStripMenuItem_Click);
-            // 
             // produtosPacotesToolStripMenuItem
             // 
             this.produtosPacotesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajusteEstoqueToolStripMenuItem,
             this.mercadoriasToolStripMenuItem});
             this.produtosPacotesToolStripMenuItem.Name = "produtosPacotesToolStripMenuItem";
             this.produtosPacotesToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
@@ -104,6 +106,13 @@ namespace SistemaPET
             this.mercadoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mercadoriasToolStripMenuItem.Text = "Mercadorias";
             this.mercadoriasToolStripMenuItem.Click += new System.EventHandler(this.mercadoriasToolStripMenuItem_Click);
+            // 
+            // ajusteEstoqueToolStripMenuItem
+            // 
+            this.ajusteEstoqueToolStripMenuItem.Name = "ajusteEstoqueToolStripMenuItem";
+            this.ajusteEstoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ajusteEstoqueToolStripMenuItem.Text = "Ajuste Estoque";
+            this.ajusteEstoqueToolStripMenuItem.Click += new System.EventHandler(this.ajusteEstoqueToolStripMenuItem_Click);
             // 
             // fmrPrincipal
             // 
@@ -134,5 +143,6 @@ namespace SistemaPET
         private System.Windows.Forms.ToolStripMenuItem espécieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtosPacotesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mercadoriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ajusteEstoqueToolStripMenuItem;
     }
 }

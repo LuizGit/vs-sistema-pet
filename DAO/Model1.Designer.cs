@@ -30,12 +30,12 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_PacoteOS_Pacote1", "pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pacote), "item_pacoteos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacoteos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_ServicoOS_OrdemServico1", "ordemservico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.ordemservico), "item_servicoos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_servicoos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_ServicoOS_Servico1", "servico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.servico), "item_servicoos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_servicoos), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_LocalEstoque_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "localestoque", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.localestoque), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Pet1", "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pet), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_Porte1", "porte", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.porte), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_TipoPet", "tipopet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.tipopet), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_ParceiroNegocio1", "parceironegocio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.parceironegocio), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Usuario_ParceiroNegocio1", "parceironegocio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.parceironegocio), "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.usuario), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_LocalEstoque_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "localestoque", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.localestoque), true)]
 
 #endregion
 
@@ -166,22 +166,6 @@ namespace DAO
             }
         }
         private ObjectSet<item_servicoos> _item_servicoos;
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        public ObjectSet<localestoque> localestoque
-        {
-            get
-            {
-                if ((_localestoque == null))
-                {
-                    _localestoque = base.CreateObjectSet<localestoque>("localestoque");
-                }
-                return _localestoque;
-            }
-        }
-        private ObjectSet<localestoque> _localestoque;
     
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
@@ -326,6 +310,22 @@ namespace DAO
             }
         }
         private ObjectSet<parceironegocio> _parceironegocio;
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        public ObjectSet<localestoque> localestoque
+        {
+            get
+            {
+                if ((_localestoque == null))
+                {
+                    _localestoque = base.CreateObjectSet<localestoque>("localestoque");
+                }
+                return _localestoque;
+            }
+        }
+        private ObjectSet<localestoque> _localestoque;
 
         #endregion
 
@@ -369,14 +369,6 @@ namespace DAO
         public void AddToitem_servicoos(item_servicoos item_servicoos)
         {
             base.AddObject("item_servicoos", item_servicoos);
-        }
-    
-        /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet localestoque. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
-        /// </summary>
-        public void AddTolocalestoque(localestoque localestoque)
-        {
-            base.AddObject("localestoque", localestoque);
         }
     
         /// <summary>
@@ -449,6 +441,14 @@ namespace DAO
         public void AddToparceironegocio(parceironegocio parceironegocio)
         {
             base.AddObject("parceironegocio", parceironegocio);
+        }
+    
+        /// <summary>
+        /// Método preterido para adicionar um novo objeto ao EntitySet localestoque. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// </summary>
+        public void AddTolocalestoque(localestoque localestoque)
+        {
+            base.AddObject("localestoque", localestoque);
         }
 
         #endregion
@@ -1952,7 +1952,7 @@ namespace DAO
         /// <param name="quantidade">Valor inicial da propriedade Quantidade.</param>
         /// <param name="mercadoria_idMercadoria">Valor inicial da propriedade Mercadoria_idMercadoria.</param>
         /// <param name="entradaSaida">Valor inicial da propriedade EntradaSaida.</param>
-        public static localestoque Createlocalestoque(global::System.Int32 idLocalEstoque, global::System.String quantidade, global::System.Int32 mercadoria_idMercadoria, global::System.Int32 entradaSaida)
+        public static localestoque Createlocalestoque(global::System.Int32 idLocalEstoque, global::System.Decimal quantidade, global::System.Int32 mercadoria_idMercadoria, global::System.Int32 entradaSaida)
         {
             localestoque localestoque = new localestoque();
             localestoque.idLocalEstoque = idLocalEstoque;
@@ -1998,7 +1998,7 @@ namespace DAO
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Quantidade
+        public global::System.Decimal Quantidade
         {
             get
             {
@@ -2008,13 +2008,13 @@ namespace DAO
             {
                 OnQuantidadeChanging(value);
                 ReportPropertyChanging("Quantidade");
-                _Quantidade = StructuralObject.SetValidValue(value, false, "Quantidade");
+                _Quantidade = StructuralObject.SetValidValue(value, "Quantidade");
                 ReportPropertyChanged("Quantidade");
                 OnQuantidadeChanged();
             }
         }
-        private global::System.String _Quantidade;
-        partial void OnQuantidadeChanging(global::System.String value);
+        private global::System.Decimal _Quantidade;
+        partial void OnQuantidadeChanging(global::System.Decimal value);
         partial void OnQuantidadeChanged();
     
         /// <summary>

@@ -68,7 +68,7 @@
             <PropertyRef Name="idLocalEstoque" />
           </Key>
           <Property Name="idLocalEstoque" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Quantidade" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Quantidade" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Mercadoria_idMercadoria" Type="int" Nullable="false" />
           <Property Name="EntradaSaida" Type="int" Nullable="false" />
         </EntityType>
@@ -525,16 +525,6 @@
           <NavigationProperty Name="ordemservico" Relationship="Self.fk_Item_ServicoOS_OrdemServico1" FromRole="item_servicoos" ToRole="ordemservico" />
           <NavigationProperty Name="servico" Relationship="Self.fk_Item_ServicoOS_Servico1" FromRole="item_servicoos" ToRole="servico" />
         </EntityType>
-        <EntityType Name="localestoque">
-          <Key>
-            <PropertyRef Name="idLocalEstoque" />
-          </Key>
-          <Property Name="idLocalEstoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Quantidade" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Mercadoria_idMercadoria" Type="Int32" Nullable="false" />
-          <Property Name="EntradaSaida" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="mercadoria" Relationship="Self.fk_LocalEstoque_Mercadoria1" FromRole="localestoque" ToRole="mercadoria" />
-        </EntityType>
         <EntityType Name="mercadoria">
           <Key>
             <PropertyRef Name="idMercadoria" />
@@ -545,7 +535,7 @@
           <Property Name="Preco" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="item_mercadoriaos" Relationship="Self.fk_Item_MercadoriaOS_Mercadoria1" FromRole="mercadoria" ToRole="item_mercadoriaos" />
           <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Mercadoria1" FromRole="mercadoria" ToRole="item_pacote" />
-          <NavigationProperty Name="localestoque" Relationship="Self.fk_LocalEstoque_Mercadoria1" FromRole="mercadoria" ToRole="localestoque" />
+          <NavigationProperty Name="localestoque" Relationship="mydbModel.fk_LocalEstoque_Mercadoria1" FromRole="mercadoria" ToRole="localestoque" />
         </EntityType>
         <EntityType Name="ordemservico">
           <Key>
@@ -739,25 +729,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_LocalEstoque_Mercadoria1">
-          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="1" />
-          <End Role="localestoque" Type="Self.localestoque" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mercadoria">
-              <PropertyRef Name="idMercadoria" />
-            </Principal>
-            <Dependent Role="localestoque">
-              <PropertyRef Name="Mercadoria_idMercadoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="banco" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="agendamento" EntityType="Self.agendamento" />
           <EntitySet Name="item_mercadoriaos" EntityType="Self.item_mercadoriaos" />
           <EntitySet Name="item_pacote" EntityType="Self.item_pacote" />
           <EntitySet Name="item_pacoteos" EntityType="Self.item_pacoteos" />
           <EntitySet Name="item_servicoos" EntityType="Self.item_servicoos" />
-          <EntitySet Name="localestoque" EntityType="Self.localestoque" />
           <EntitySet Name="mercadoria" EntityType="Self.mercadoria" />
           <EntitySet Name="ordemservico" EntityType="Self.ordemservico" />
           <EntitySet Name="pacote" EntityType="Self.pacote" />
@@ -809,10 +786,6 @@
             <End Role="servico" EntitySet="servico" />
             <End Role="item_servicoos" EntitySet="item_servicoos" />
           </AssociationSet>
-          <AssociationSet Name="fk_LocalEstoque_Mercadoria1" Association="Self.fk_LocalEstoque_Mercadoria1">
-            <End Role="mercadoria" EntitySet="mercadoria" />
-            <End Role="localestoque" EntitySet="localestoque" />
-          </AssociationSet>
           <EntitySet Name="pet" EntityType="mydbModel.pet" />
           <AssociationSet Name="fk_Agendamento_Pet1" Association="mydbModel.fk_Agendamento_Pet1">
             <End Role="pet" EntitySet="pet" />
@@ -834,6 +807,11 @@
           <AssociationSet Name="fk_Usuario_ParceiroNegocio1" Association="mydbModel.fk_Usuario_ParceiroNegocio1">
             <End Role="parceironegocio" EntitySet="parceironegocio" />
             <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <EntitySet Name="localestoque" EntityType="mydbModel.localestoque" />
+          <AssociationSet Name="fk_LocalEstoque_Mercadoria1" Association="mydbModel.fk_LocalEstoque_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="localestoque" EntitySet="localestoque" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="pet">
@@ -935,6 +913,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="localestoque">
+          <Key>
+            <PropertyRef Name="idLocalEstoque" />
+          </Key>
+          <Property Name="idLocalEstoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantidade" Type="Decimal" Nullable="false" />
+          <Property Name="Mercadoria_idMercadoria" Type="Int32" Nullable="false" />
+          <Property Name="EntradaSaida" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mercadoria" Relationship="mydbModel.fk_LocalEstoque_Mercadoria1" FromRole="localestoque" ToRole="mercadoria" />
+        </EntityType>
+        <Association Name="fk_LocalEstoque_Mercadoria1">
+          <End Type="mydbModel.mercadoria" Role="mercadoria" Multiplicity="1" />
+          <End Type="mydbModel.localestoque" Role="localestoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="localestoque">
+              <PropertyRef Name="Mercadoria_idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1001,16 +1001,6 @@
                 <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
                 <ScalarProperty Name="idServico" ColumnName="idServico" />
                 <ScalarProperty Name="idOrdemServico" ColumnName="idOrdemServico" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="localestoque">
-            <EntityTypeMapping TypeName="mydbModel.localestoque">
-              <MappingFragment StoreEntitySet="localestoque">
-                <ScalarProperty Name="idLocalEstoque" ColumnName="idLocalEstoque" />
-                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
-                <ScalarProperty Name="Mercadoria_idMercadoria" ColumnName="Mercadoria_idMercadoria" />
-                <ScalarProperty Name="EntradaSaida" ColumnName="EntradaSaida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1110,6 +1100,16 @@
                 <ScalarProperty Name="CpfCnpj" ColumnName="CpfCnpj" />
                 <ScalarProperty Name="NomeRazao" ColumnName="NomeRazao" />
                 <ScalarProperty Name="idParceiroNegocio" ColumnName="idParceiroNegocio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localestoque">
+            <EntityTypeMapping TypeName="mydbModel.localestoque">
+              <MappingFragment StoreEntitySet="localestoque">
+                <ScalarProperty Name="EntradaSaida" ColumnName="EntradaSaida" />
+                <ScalarProperty Name="Mercadoria_idMercadoria" ColumnName="Mercadoria_idMercadoria" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="idLocalEstoque" ColumnName="idLocalEstoque" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

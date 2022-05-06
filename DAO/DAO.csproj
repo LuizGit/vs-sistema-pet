@@ -71,11 +71,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EstoqueDAO.cs" />
+    <Compile Include="MercadoriaDAO.cs" />
     <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MovimentoEstoqueVO.cs" />
     <Compile Include="ParceiroNegocioDAO.cs" />
     <Compile Include="ParceiroVO.cs" />
     <Compile Include="PetDAO.cs" />
