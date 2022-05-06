@@ -219,6 +219,8 @@ namespace SistemaPET
             this.dgvHistorico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHistorico.Location = new System.Drawing.Point(6, 19);
             this.dgvHistorico.Name = "dgvHistorico";
+            this.dgvHistorico.ReadOnly = true;
+            this.dgvHistorico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistorico.Size = new System.Drawing.Size(847, 280);
             this.dgvHistorico.TabIndex = 1;
             // 

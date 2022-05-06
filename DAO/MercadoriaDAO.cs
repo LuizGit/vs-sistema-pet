@@ -8,6 +8,7 @@ namespace DAO
 {
     public class MercadoriaDAO
     {
+        //Este método esta listando as mercadorias na tela 'fmrAjusteEstoque'
         public List<mercadoria> CarregarListaPesquisaMercadoria()
         {
             banco objBanco = new banco();
