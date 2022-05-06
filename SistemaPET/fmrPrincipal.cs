@@ -40,5 +40,11 @@ namespace SistemaPET
             frmCadastroPET f = new frmCadastroPET();
             f.ShowDialog();
         }
+
+        private void mercadoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmrCadProduto f = new fmrCadProduto();
+            f.ShowDialog();
+        }
     }
 }
