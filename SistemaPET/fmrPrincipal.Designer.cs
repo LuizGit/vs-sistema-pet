@@ -35,13 +35,16 @@ namespace SistemaPET
             this.pETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.espécieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtosPacotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mercadoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.parceiroDeNegocioToolStripMenuItem});
+            this.parceiroDeNegocioToolStripMenuItem,
+            this.produtosPacotesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(954, 24);
@@ -62,21 +65,21 @@ namespace SistemaPET
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.cadastroToolStripMenuItem.Text = "Parceiro Negocio";
             this.cadastroToolStripMenuItem.Click += new System.EventHandler(this.cadastroToolStripMenuItem_Click);
             // 
             // pETToolStripMenuItem
             // 
             this.pETToolStripMenuItem.Name = "pETToolStripMenuItem";
-            this.pETToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pETToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.pETToolStripMenuItem.Text = "PET";
             this.pETToolStripMenuItem.Click += new System.EventHandler(this.pETToolStripMenuItem_Click);
             // 
             // usuarioToolStripMenuItem
             // 
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
             this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
@@ -86,6 +89,21 @@ namespace SistemaPET
             this.espécieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.espécieToolStripMenuItem.Text = "Espécie";
             this.espécieToolStripMenuItem.Click += new System.EventHandler(this.espécieToolStripMenuItem_Click);
+            // 
+            // produtosPacotesToolStripMenuItem
+            // 
+            this.produtosPacotesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mercadoriasToolStripMenuItem});
+            this.produtosPacotesToolStripMenuItem.Name = "produtosPacotesToolStripMenuItem";
+            this.produtosPacotesToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.produtosPacotesToolStripMenuItem.Text = "Produtos / Pacotes";
+            // 
+            // mercadoriasToolStripMenuItem
+            // 
+            this.mercadoriasToolStripMenuItem.Name = "mercadoriasToolStripMenuItem";
+            this.mercadoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mercadoriasToolStripMenuItem.Text = "Mercadorias";
+            this.mercadoriasToolStripMenuItem.Click += new System.EventHandler(this.mercadoriasToolStripMenuItem_Click);
             // 
             // fmrPrincipal
             // 
@@ -114,5 +132,7 @@ namespace SistemaPET
         private System.Windows.Forms.ToolStripMenuItem pETToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem espécieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtosPacotesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mercadoriasToolStripMenuItem;
     }
 }

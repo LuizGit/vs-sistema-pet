@@ -78,6 +78,12 @@
     <Compile Include="fmrEspecie.Designer.cs">
       <DependentUpon>fmrEspecie.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmrCadProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrCadProduto.Designer.cs">
+      <DependentUpon>fmrCadProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmrPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmrEspecie.resx">
       <DependentUpon>fmrEspecie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrCadProduto.resx">
+      <DependentUpon>fmrCadProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrPrincipal.resx">
       <DependentUpon>fmrPrincipal.cs</DependentUpon>

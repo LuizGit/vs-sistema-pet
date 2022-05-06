@@ -46,5 +46,11 @@ namespace SistemaPET
             fmrEspecie f = new fmrEspecie();
             f.ShowDialog();
         }
+
+        private void mercadoriasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmrCadProduto f = new fmrCadProduto();
+            f.ShowDialog();
+        }
     }
 }
