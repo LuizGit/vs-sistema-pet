@@ -36,8 +36,8 @@ namespace SistemaPET
             this.pETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosPacotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mercadoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajusteEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mercadoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,19 +100,19 @@ namespace SistemaPET
             this.produtosPacotesToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
             this.produtosPacotesToolStripMenuItem.Text = "Produtos / Pacotes";
             // 
-            // mercadoriasToolStripMenuItem
-            // 
-            this.mercadoriasToolStripMenuItem.Name = "mercadoriasToolStripMenuItem";
-            this.mercadoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mercadoriasToolStripMenuItem.Text = "Mercadorias";
-            this.mercadoriasToolStripMenuItem.Click += new System.EventHandler(this.mercadoriasToolStripMenuItem_Click);
-            // 
             // ajusteEstoqueToolStripMenuItem
             // 
             this.ajusteEstoqueToolStripMenuItem.Name = "ajusteEstoqueToolStripMenuItem";
-            this.ajusteEstoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ajusteEstoqueToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ajusteEstoqueToolStripMenuItem.Text = "Ajuste Estoque";
             this.ajusteEstoqueToolStripMenuItem.Click += new System.EventHandler(this.ajusteEstoqueToolStripMenuItem_Click);
+            // 
+            // mercadoriasToolStripMenuItem
+            // 
+            this.mercadoriasToolStripMenuItem.Name = "mercadoriasToolStripMenuItem";
+            this.mercadoriasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mercadoriasToolStripMenuItem.Text = "Mercadorias";
+            this.mercadoriasToolStripMenuItem.Click += new System.EventHandler(this.mercadoriasToolStripMenuItem_Click);
             // 
             // fmrPrincipal
             // 
@@ -125,6 +125,7 @@ namespace SistemaPET
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema PET";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.fmrPrincipal_Load);
             this.Shown += new System.EventHandler(this.fmrPrincipal_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

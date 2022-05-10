@@ -155,5 +155,23 @@ namespace SistemaPET
 
             txtSaldo.Text = objDao.CalculaSaldoMercadoria(idMerc).ToString();
         }
+
+        private void txtDescPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            MercadoriaDAO objDao = new MercadoriaDAO();
+            List<mercadoria> lstMercadoria = objDao.PesquisaMercadoriaPorDescricao(txtDescPesquisa.Text);
+
+            dgvMercadoriaPesquisa.DataSource = lstMercadoria;
+
+            Util.VisibilidadeColunaGrid(dgvMercadoriaPesquisa, "item_mercadoriaos", false);
+            Util.VisibilidadeColunaGrid(dgvMercadoriaPesquisa, "item_pacote", false);
+            Util.VisibilidadeColunaGrid(dgvMercadoriaPesquisa, "localestoque", false);
+
+
+            Util.HeaderColunaGrid(dgvMercadoriaPesquisa, "idMercadoria", "Identificador");
+            Util.HeaderColunaGrid(dgvMercadoriaPesquisa, "Descricao", "Descrição");
+            Util.HeaderColunaGrid(dgvMercadoriaPesquisa, "CodBarras", "Cod. de Barras");
+            Util.HeaderColunaGrid(dgvMercadoriaPesquisa, "Preco", "Preço");
+        }
     }
 }

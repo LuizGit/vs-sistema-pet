@@ -30,6 +30,8 @@ namespace SistemaPET
         private void InitializeComponent()
         {
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.txtSaldo = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.cbmTipo = new System.Windows.Forms.ComboBox();
@@ -42,17 +44,15 @@ namespace SistemaPET
             this.lblDescricao = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
-            this.gpbRegistros = new System.Windows.Forms.GroupBox();
-            this.dgvMercadoriaPesquisa = new System.Windows.Forms.DataGridView();
-            this.dgvHistorico = new System.Windows.Forms.DataGridView();
-            this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtDescPesquisa = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSaldo = new System.Windows.Forms.TextBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.dgvMercadoriaPesquisa = new System.Windows.Forms.DataGridView();
+            this.gpbRegistros = new System.Windows.Forms.GroupBox();
+            this.dgvHistorico = new System.Windows.Forms.DataGridView();
             this.gpbDados.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
-            this.gpbRegistros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMercadoriaPesquisa)).BeginInit();
+            this.gpbRegistros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorico)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +77,23 @@ namespace SistemaPET
             this.gpbDados.TabIndex = 0;
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Entrada / Saida";
+            // 
+            // txtSaldo
+            // 
+            this.txtSaldo.Location = new System.Drawing.Point(79, 131);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.ReadOnly = true;
+            this.txtSaldo.Size = new System.Drawing.Size(97, 20);
+            this.txtSaldo.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 134);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Saldo:";
             // 
             // btnCancelar
             // 
@@ -192,15 +209,22 @@ namespace SistemaPET
             this.gpbPesquisa.TabStop = false;
             this.gpbPesquisa.Text = "Pesquisa";
             // 
-            // gpbRegistros
+            // txtDescPesquisa
             // 
-            this.gpbRegistros.Controls.Add(this.dgvHistorico);
-            this.gpbRegistros.Location = new System.Drawing.Point(5, 257);
-            this.gpbRegistros.Name = "gpbRegistros";
-            this.gpbRegistros.Size = new System.Drawing.Size(859, 305);
-            this.gpbRegistros.TabIndex = 2;
-            this.gpbRegistros.TabStop = false;
-            this.gpbRegistros.Text = "Histórico de Movimentações";
+            this.txtDescPesquisa.Location = new System.Drawing.Point(27, 21);
+            this.txtDescPesquisa.Name = "txtDescPesquisa";
+            this.txtDescPesquisa.Size = new System.Drawing.Size(429, 20);
+            this.txtDescPesquisa.TabIndex = 2;
+            this.txtDescPesquisa.TextChanged += new System.EventHandler(this.txtDescPesquisa_TextChanged);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(381, 46);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 1;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
             // 
             // dgvMercadoriaPesquisa
             // 
@@ -214,6 +238,16 @@ namespace SistemaPET
             this.dgvMercadoriaPesquisa.TabIndex = 0;
             this.dgvMercadoriaPesquisa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMercadoriaPesquisa_CellClick);
             // 
+            // gpbRegistros
+            // 
+            this.gpbRegistros.Controls.Add(this.dgvHistorico);
+            this.gpbRegistros.Location = new System.Drawing.Point(5, 257);
+            this.gpbRegistros.Name = "gpbRegistros";
+            this.gpbRegistros.Size = new System.Drawing.Size(859, 305);
+            this.gpbRegistros.TabIndex = 2;
+            this.gpbRegistros.TabStop = false;
+            this.gpbRegistros.Text = "Histórico de Movimentações";
+            // 
             // dgvHistorico
             // 
             this.dgvHistorico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -223,39 +257,6 @@ namespace SistemaPET
             this.dgvHistorico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHistorico.Size = new System.Drawing.Size(847, 280);
             this.dgvHistorico.TabIndex = 1;
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(381, 46);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 1;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            // 
-            // txtDescPesquisa
-            // 
-            this.txtDescPesquisa.Location = new System.Drawing.Point(27, 21);
-            this.txtDescPesquisa.Name = "txtDescPesquisa";
-            this.txtDescPesquisa.Size = new System.Drawing.Size(429, 20);
-            this.txtDescPesquisa.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(30, 134);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Saldo:";
-            // 
-            // txtSaldo
-            // 
-            this.txtSaldo.Location = new System.Drawing.Point(79, 131);
-            this.txtSaldo.Name = "txtSaldo";
-            this.txtSaldo.ReadOnly = true;
-            this.txtSaldo.Size = new System.Drawing.Size(97, 20);
-            this.txtSaldo.TabIndex = 12;
             // 
             // fmrAjusteEstoque
             // 
@@ -272,8 +273,8 @@ namespace SistemaPET
             this.gpbDados.PerformLayout();
             this.gpbPesquisa.ResumeLayout(false);
             this.gpbPesquisa.PerformLayout();
-            this.gpbRegistros.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMercadoriaPesquisa)).EndInit();
+            this.gpbRegistros.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHistorico)).EndInit();
             this.ResumeLayout(false);
 

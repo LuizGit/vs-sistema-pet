@@ -26,7 +26,7 @@ namespace SistemaPET
         private void fmrPrincipal_Shown(object sender, EventArgs e)
         {
             Login f = new Login();
-            f.Close();
+            f.Hide();
         }
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,6 +57,12 @@ namespace SistemaPET
         {
             fmrAjusteEstoque f = new fmrAjusteEstoque();
             f.ShowDialog();
+        }
+
+        private void fmrPrincipal_Load(object sender, EventArgs e)
+        {
+            Login f = new Login();
+            f.Hide();
         }
     }
 }
