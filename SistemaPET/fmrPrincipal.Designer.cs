@@ -36,8 +36,9 @@ namespace SistemaPET
             this.pETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosPacotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mercadoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajusteEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mercadoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,7 @@ namespace SistemaPET
             this.espécieToolStripMenuItem,
             this.cadastroToolStripMenuItem,
             this.pETToolStripMenuItem,
+            this.serviçoToolStripMenuItem,
             this.usuarioToolStripMenuItem});
             this.parceiroDeNegocioToolStripMenuItem.Name = "parceiroDeNegocioToolStripMenuItem";
             this.parceiroDeNegocioToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -66,28 +68,28 @@ namespace SistemaPET
             // espécieToolStripMenuItem
             // 
             this.espécieToolStripMenuItem.Name = "espécieToolStripMenuItem";
-            this.espécieToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.espécieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.espécieToolStripMenuItem.Text = "Espécie";
             this.espécieToolStripMenuItem.Click += new System.EventHandler(this.espécieToolStripMenuItem_Click);
             // 
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cadastroToolStripMenuItem.Text = "Parceiro Negocio";
             this.cadastroToolStripMenuItem.Click += new System.EventHandler(this.cadastroToolStripMenuItem_Click);
             // 
             // pETToolStripMenuItem
             // 
             this.pETToolStripMenuItem.Name = "pETToolStripMenuItem";
-            this.pETToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.pETToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pETToolStripMenuItem.Text = "PET";
             this.pETToolStripMenuItem.Click += new System.EventHandler(this.pETToolStripMenuItem_Click);
             // 
             // usuarioToolStripMenuItem
             // 
             this.usuarioToolStripMenuItem.Name = "usuarioToolStripMenuItem";
-            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.usuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuarioToolStripMenuItem.Text = "Usuario";
             this.usuarioToolStripMenuItem.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
@@ -100,19 +102,26 @@ namespace SistemaPET
             this.produtosPacotesToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
             this.produtosPacotesToolStripMenuItem.Text = "Produtos / Pacotes";
             // 
-            // mercadoriasToolStripMenuItem
-            // 
-            this.mercadoriasToolStripMenuItem.Name = "mercadoriasToolStripMenuItem";
-            this.mercadoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.mercadoriasToolStripMenuItem.Text = "Mercadorias";
-            this.mercadoriasToolStripMenuItem.Click += new System.EventHandler(this.mercadoriasToolStripMenuItem_Click);
-            // 
             // ajusteEstoqueToolStripMenuItem
             // 
             this.ajusteEstoqueToolStripMenuItem.Name = "ajusteEstoqueToolStripMenuItem";
-            this.ajusteEstoqueToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ajusteEstoqueToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ajusteEstoqueToolStripMenuItem.Text = "Ajuste Estoque";
             this.ajusteEstoqueToolStripMenuItem.Click += new System.EventHandler(this.ajusteEstoqueToolStripMenuItem_Click);
+            // 
+            // mercadoriasToolStripMenuItem
+            // 
+            this.mercadoriasToolStripMenuItem.Name = "mercadoriasToolStripMenuItem";
+            this.mercadoriasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mercadoriasToolStripMenuItem.Text = "Mercadorias";
+            this.mercadoriasToolStripMenuItem.Click += new System.EventHandler(this.mercadoriasToolStripMenuItem_Click);
+            // 
+            // serviçoToolStripMenuItem
+            // 
+            this.serviçoToolStripMenuItem.Name = "serviçoToolStripMenuItem";
+            this.serviçoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serviçoToolStripMenuItem.Text = "Serviço";
+            this.serviçoToolStripMenuItem.Click += new System.EventHandler(this.serviçoToolStripMenuItem_Click);
             // 
             // fmrPrincipal
             // 
@@ -144,5 +153,6 @@ namespace SistemaPET
         private System.Windows.Forms.ToolStripMenuItem produtosPacotesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mercadoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajusteEstoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serviçoToolStripMenuItem;
     }
 }

@@ -58,5 +58,11 @@ namespace SistemaPET
             fmrAjusteEstoque f = new fmrAjusteEstoque();
             f.ShowDialog();
         }
+
+        private void serviçoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fmrCadatroServico f = new fmrCadatroServico();
+            f.ShowDialog();
+        }
     }
 }
