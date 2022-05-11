@@ -112,7 +112,7 @@
           <Property Name="Estado" Type="varchar" MaxLength="50" />
           <Property Name="Contato" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="100" />
-          <Property Name="Ativo" Type="int" Nullable="false" />
+          <Property Name="Ativo" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <EntityType Name="pet">
           <Key>
@@ -135,7 +135,7 @@
           <Key>
             <PropertyRef Name="idPorte" />
           </Key>
-          <Property Name="idPorte" Type="int" Nullable="false" />
+          <Property Name="idPorte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <EntityType Name="servico">
