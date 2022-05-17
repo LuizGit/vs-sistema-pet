@@ -26,5 +26,39 @@ namespace DAO
             objBanco.SaveChanges();
 
         }
-    }
+
+
+        public void ExcluirMercadoria(int idDescricao)
+        {
+
+            banco ObjBanco = new banco();
+            mercadoria objDeletar = ObjBanco.mercadoria.Where(p => p.idMercadoria == idDescricao).FirstOrDefault();
+
+            ObjBanco.DeleteObject(objDeletar);
+
+            ObjBanco.SaveChanges();
+        }
+
+
+        public void AlterarMercadoria(mercadoria objAlterar)
+        {
+
+            banco objbanco = new banco();
+
+            mercadoria objmercadoria  = objbanco.mercadoria.Where(t => t.idMercadoria == objAlterar.idMercadoria).FirstOrDefault();
+
+            objmercadoria.Descricao = objAlterar.Descricao;
+            objmercadoria.CodBarras = objAlterar.CodBarras;
+            objmercadoria.Preco = objAlterar.Preco;
+
+            objbanco.SaveChanges();
+
+        }
+
+      
+
+
+
+
+}
 }
