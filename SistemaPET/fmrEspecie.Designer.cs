@@ -30,6 +30,7 @@ namespace SistemaPET
         private void InitializeComponent()
         {
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.txtIdTipoPet = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@ namespace SistemaPET
             this.lblDescricao = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
             this.dgvPesquisa = new System.Windows.Forms.DataGridView();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.gpbDados.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisa)).BeginInit();
@@ -59,6 +59,17 @@ namespace SistemaPET
             this.gpbDados.TabIndex = 0;
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Dados";
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Enabled = false;
+            this.BtnCancelar.Location = new System.Drawing.Point(131, 218);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.BtnCancelar.TabIndex = 14;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // txtIdTipoPet
             // 
@@ -124,6 +135,7 @@ namespace SistemaPET
             this.gpbPesquisa.TabIndex = 1;
             this.gpbPesquisa.TabStop = false;
             this.gpbPesquisa.Text = "Pesquisa";
+            this.gpbPesquisa.Enter += new System.EventHandler(this.gpbPesquisa_Enter);
             // 
             // dgvPesquisa
             // 
@@ -135,17 +147,7 @@ namespace SistemaPET
             this.dgvPesquisa.Size = new System.Drawing.Size(166, 280);
             this.dgvPesquisa.TabIndex = 0;
             this.dgvPesquisa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPesquisa_CellClick);
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.Enabled = false;
-            this.BtnCancelar.Location = new System.Drawing.Point(131, 218);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 14;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            this.dgvPesquisa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPesquisa_CellContentClick);
             // 
             // fmrEspecie
             // 

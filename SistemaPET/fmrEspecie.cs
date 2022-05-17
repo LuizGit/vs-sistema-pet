@@ -32,8 +32,10 @@ namespace SistemaPET
         {
             if (ValidarCampos())
             {
+                //Aqui ele instanciou o que seia a tabela
                 tipopet objTipo = new tipopet();
 
+                //Aqui ele intanciou a DAO
                 TipoPetDAO objDao = new TipoPetDAO();
 
                 objTipo.Descricao = txtDescricao.Text.Trim();
@@ -48,7 +50,6 @@ namespace SistemaPET
                     btnAlterar.Enabled = false;
                     btnExcluir.Enabled = false;
                     BtnCancelar.Enabled = false;
-
 
                 }
                 catch
@@ -137,10 +138,13 @@ namespace SistemaPET
 
         private void dgvPesquisa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Evento referente a seleção de uma linha na DGV
             if (dgvPesquisa.RowCount > 0)
             {
+
                 tipopet objTipoPet = (tipopet)dgvPesquisa.CurrentRow.DataBoundItem;
 
+                //Pega da Grid e joga para os txt's
                 txtIdTipoPet.Text = objTipoPet.idTipoPet.ToString();
                 txtDescricao.Text = objTipoPet.Descricao;
                 btnCadastrar.Enabled = false;
@@ -193,6 +197,16 @@ namespace SistemaPET
             btnExcluir.Enabled = false;
             BtnCancelar.Enabled = false;
             btnCadastrar.Enabled = true;
+        }
+
+        private void dgvPesquisa_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void gpbPesquisa_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
