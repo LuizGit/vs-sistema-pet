@@ -209,6 +209,7 @@ namespace SistemaPET
                 txtDescricao.Text = objMerc.Descricao;
                 txtPreco.Text =  objMerc.Preco.ToString();
                 txtId.Text = objMerc.idMercadoria.ToString();
+                CarregaCampoSaldo();
                 btnCadastrar.Enabled = false;
                 dgvProdutos.Enabled = false;
                 btnAlterar.Enabled = true;
@@ -216,6 +217,21 @@ namespace SistemaPET
                 btnCancelar.Enabled = true;
 
             }
+        }
+        private void CarregaCampoSaldo()
+        {
+            if (txtId.Text.Trim() == "")
+            {
+                Util.ExibirMsg("Não foi possivel carregar o Saldo pois não foi informado um id.");
+            }
+            else
+            {
+                EstoqueDAO objDao = new EstoqueDAO();
+
+                txtSaldoEstoque.Text = Convert.ToString(objDao.CalculaSaldoMercadoria(Convert.ToInt32(txtId.Text.Trim())));
+            }
+
+
         }
     }
 
