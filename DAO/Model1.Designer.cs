@@ -33,9 +33,9 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Pet1", "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pet), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_Porte1", "porte", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.porte), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_TipoPet", "tipopet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.tipopet), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_LocalEstoque_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "localestoque", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.localestoque), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_ParceiroNegocio1", "parceironegocio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.parceironegocio), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Usuario_ParceiroNegocio1", "parceironegocio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.parceironegocio), "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.usuario), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_LocalEstoque_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "localestoque", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.localestoque), true)]
 
 #endregion
 
@@ -298,22 +298,6 @@ namespace DAO
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
         /// </summary>
-        public ObjectSet<parceironegocio> parceironegocio
-        {
-            get
-            {
-                if ((_parceironegocio == null))
-                {
-                    _parceironegocio = base.CreateObjectSet<parceironegocio>("parceironegocio");
-                }
-                return _parceironegocio;
-            }
-        }
-        private ObjectSet<parceironegocio> _parceironegocio;
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
         public ObjectSet<localestoque> localestoque
         {
             get
@@ -326,6 +310,22 @@ namespace DAO
             }
         }
         private ObjectSet<localestoque> _localestoque;
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        public ObjectSet<parceironegocio> parceironegocio
+        {
+            get
+            {
+                if ((_parceironegocio == null))
+                {
+                    _parceironegocio = base.CreateObjectSet<parceironegocio>("parceironegocio");
+                }
+                return _parceironegocio;
+            }
+        }
+        private ObjectSet<parceironegocio> _parceironegocio;
 
         #endregion
 
@@ -436,19 +436,19 @@ namespace DAO
         }
     
         /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet parceironegocio. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
-        /// </summary>
-        public void AddToparceironegocio(parceironegocio parceironegocio)
-        {
-            base.AddObject("parceironegocio", parceironegocio);
-        }
-    
-        /// <summary>
         /// Método preterido para adicionar um novo objeto ao EntitySet localestoque. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
         /// </summary>
         public void AddTolocalestoque(localestoque localestoque)
         {
             base.AddObject("localestoque", localestoque);
+        }
+    
+        /// <summary>
+        /// Método preterido para adicionar um novo objeto ao EntitySet parceironegocio. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// </summary>
+        public void AddToparceironegocio(parceironegocio parceironegocio)
+        {
+            base.AddObject("parceironegocio", parceironegocio);
         }
 
         #endregion

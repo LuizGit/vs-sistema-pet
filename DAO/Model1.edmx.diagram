@@ -32,11 +32,11 @@
         <AssociationConnector Association="mydbModel.fk_Agendamento_Pet1" />
         <AssociationConnector Association="mydbModel.fk_Pet_Porte1" />
         <AssociationConnector Association="mydbModel.fk_Pet_TipoPet" />
+        <EntityTypeShape EntityType="mydbModel.localestoque" Width="1.5" PointX="8.375" PointY="7.875" />
+        <AssociationConnector Association="mydbModel.fk_LocalEstoque_Mercadoria1" />
         <EntityTypeShape EntityType="mydbModel.parceironegocio" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="mydbModel.fk_Pet_ParceiroNegocio1" />
         <AssociationConnector Association="mydbModel.fk_Usuario_ParceiroNegocio1" />
-        <EntityTypeShape EntityType="mydbModel.localestoque" Width="1.5" PointX="8.375" PointY="7.875" />
-        <AssociationConnector Association="mydbModel.fk_LocalEstoque_Mercadoria1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

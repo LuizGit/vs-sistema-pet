@@ -35,7 +35,7 @@ namespace SistemaPET
                     objDAO.CadastrarMercadoria(objMercadoria);
                     Util.ExibirMsg(Util.TipoMsg.Sucesso);
                     LimparCampos();
-                    CarregarDgvMercadorias();
+                    CarregarDgvProdutos();
                     btnCadastrar.Enabled = true;
                     btnAlterar.Enabled = false;
                     btnExcluir.Enabled = false;
@@ -87,27 +87,27 @@ namespace SistemaPET
 
         private void fmrCadProduto_Load(object sender, EventArgs e)
         {
-            CarregarDgvMercadorias();
+            CarregarDgvProdutos();
         }
 
-        private void CarregarDgvMercadorias()
+        private void CarregarDgvProdutos()
         {
 
             MercadoriaDAO objDAO = new MercadoriaDAO();
             List<mercadoria> lstmercadoria = objDAO.CarregarListaPesquisaMercadoria();
 
-            dgvProdutos.DataSource = lstmercadoria;
+            dgvPesquisa.DataSource = lstmercadoria;
 
 
 
-            Util.VisibilidadeColunaGrid(dgvProdutos, "item_mercadoriaos", false);
-            Util.VisibilidadeColunaGrid(dgvProdutos, "item_pacote", false);
-            Util.VisibilidadeColunaGrid(dgvProdutos, "localestoque", false);
+            Util.VisibilidadeColunaGrid(dgvPesquisa, "item_mercadoriaos", false);
+            Util.VisibilidadeColunaGrid(dgvPesquisa, "item_pacote", false);
+            Util.VisibilidadeColunaGrid(dgvPesquisa, "localestoque", false);
 
 
-            Util.HeaderColunaGrid(dgvProdutos, "Descricao", "Descrição");
-            Util.HeaderColunaGrid(dgvProdutos, "CodBarras", "Código de Barras");
-            Util.HeaderColunaGrid(dgvProdutos, "Preco", "Preço");
+            Util.HeaderColunaGrid(dgvPesquisa, "Descricao", "Descrição");
+            Util.HeaderColunaGrid(dgvPesquisa, "CodBarras", "Código de Barras");
+            Util.HeaderColunaGrid(dgvPesquisa, "Preco", "Preço");
 }
 
         
@@ -135,12 +135,12 @@ namespace SistemaPET
                     objDao.AlterarMercadoria(objAlterar);
                     Util.ExibirMsg(Util.TipoMsg.Sucesso);
                     LimparCampos();
-                    CarregarDgvMercadorias();
+                    CarregarDgvProdutos();
                     btnCadastrar.Enabled = true;
                     btnAlterar.Enabled = false;
                     btnExcluir.Enabled = false;
                     btnCancelar.Enabled = false;
-                    dgvProdutos.Enabled = true;
+                    dgvPesquisa.Enabled = true;
 
                 }
                 catch (Exception)
@@ -160,7 +160,7 @@ namespace SistemaPET
             btnExcluir.Enabled = false;
             btnCancelar.Enabled = false;
             btnCadastrar.Enabled = true;
-            dgvProdutos.Enabled = true;
+            dgvPesquisa.Enabled = true;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -178,12 +178,12 @@ namespace SistemaPET
                     objDao.ExcluirMercadoria(Convert.ToInt32(txtId.Text.Trim()));
                     Util.ExibirMsg(Util.TipoMsg.Sucesso);
                     LimparCampos();
-                    CarregarDgvMercadorias();
+                    CarregarDgvProdutos();
                     btnCadastrar.Enabled = true;
                     btnAlterar.Enabled = false;
                     btnExcluir.Enabled = false;
                     btnCancelar.Enabled = false;
-                    dgvProdutos.Enabled = true;
+                    dgvPesquisa.Enabled = true;
                 }
                 catch
                 {
@@ -201,9 +201,9 @@ namespace SistemaPET
 
         private void dgvProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvProdutos.RowCount > 0)
+            if (dgvPesquisa.RowCount > 0)
             {
-                mercadoria objMerc = (mercadoria)dgvProdutos.CurrentRow.DataBoundItem;
+                mercadoria objMerc = (mercadoria)dgvPesquisa.CurrentRow.DataBoundItem;
 
                 txtCodBarras.Text = objMerc.CodBarras;
                 txtDescricao.Text = objMerc.Descricao;
@@ -211,7 +211,7 @@ namespace SistemaPET
                 txtId.Text = objMerc.idMercadoria.ToString();
                 CarregaCampoSaldo();
                 btnCadastrar.Enabled = false;
-                dgvProdutos.Enabled = false;
+                dgvPesquisa.Enabled = false;
                 btnAlterar.Enabled = true;
                 btnExcluir.Enabled = true;
                 btnCancelar.Enabled = true;
@@ -231,6 +231,22 @@ namespace SistemaPET
                 txtSaldoEstoque.Text = Convert.ToString(objDao.CalculaSaldoMercadoria(Convert.ToInt32(txtId.Text.Trim())));
             }
 
+
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            MercadoriaDAO objDao = new MercadoriaDAO();
+
+            string Descricao = txtDescricaoPesquisa.Text;
+
+            dgvPesquisa.DataSource = objDao.PesquisarCampoDescricao(Descricao);
+        }
+    
+   
+
+        private void dgvPesquisa_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

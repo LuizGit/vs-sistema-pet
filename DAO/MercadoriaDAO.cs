@@ -17,6 +17,7 @@ namespace DAO
             return lstRetorno;
         }
 
+
         public void CadastrarMercadoria(mercadoria objMercadoria)
         {
             banco objBanco = new banco();
@@ -55,10 +56,17 @@ namespace DAO
 
         }
 
-      
+        public List<mercadoria> PesquisarCampoDescricao(string NomeRazao)
+        {
+            banco objBanco = new banco();
+
+            List<mercadoria> lstRetorno = objBanco.mercadoria.Where(p => p.Descricao.Contains(NomeRazao)).ToList();
+
+            return lstRetorno;
+        }
 
 
 
 
-}
+    }
 }

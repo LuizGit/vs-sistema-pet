@@ -30,6 +30,8 @@ namespace SistemaPET
         private void InitializeComponent()
         {
             this.gpbDados = new System.Windows.Forms.GroupBox();
+            this.txtCodBarras = new System.Windows.Forms.MaskedTextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -38,23 +40,22 @@ namespace SistemaPET
             this.label4 = new System.Windows.Forms.Label();
             this.txtPreco = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCodBarras = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            this.txtDesricaoPesquisa = new System.Windows.Forms.TextBox();
+            this.txtDescricaoPesquisa = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.txtId = new System.Windows.Forms.TextBox();
+            this.dgvPesquisa = new System.Windows.Forms.DataGridView();
             this.gpbDados.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisa)).BeginInit();
             this.SuspendLayout();
             // 
             // gpbDados
             // 
+            this.gpbDados.Controls.Add(this.txtCodBarras);
             this.gpbDados.Controls.Add(this.txtId);
             this.gpbDados.Controls.Add(this.btnCancelar);
             this.gpbDados.Controls.Add(this.btnExcluir);
@@ -64,7 +65,6 @@ namespace SistemaPET
             this.gpbDados.Controls.Add(this.label4);
             this.gpbDados.Controls.Add(this.txtPreco);
             this.gpbDados.Controls.Add(this.label3);
-            this.gpbDados.Controls.Add(this.txtCodBarras);
             this.gpbDados.Controls.Add(this.label2);
             this.gpbDados.Controls.Add(this.txtDescricao);
             this.gpbDados.Controls.Add(this.label1);
@@ -74,6 +74,24 @@ namespace SistemaPET
             this.gpbDados.TabIndex = 0;
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Cadastrar";
+            // 
+            // txtCodBarras
+            // 
+            this.txtCodBarras.Location = new System.Drawing.Point(101, 70);
+            this.txtCodBarras.Mask = "00000000000000";
+            this.txtCodBarras.Name = "txtCodBarras";
+            this.txtCodBarras.Size = new System.Drawing.Size(107, 20);
+            this.txtCodBarras.TabIndex = 12;
+            this.txtCodBarras.MaskChanged += new System.EventHandler(this.btnCadastrar_Click);
+            // 
+            // txtId
+            // 
+            this.txtId.Enabled = false;
+            this.txtId.Location = new System.Drawing.Point(10, 416);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(33, 20);
+            this.txtId.TabIndex = 2;
+            this.txtId.Visible = false;
             // 
             // btnCancelar
             // 
@@ -148,13 +166,6 @@ namespace SistemaPET
             this.label3.TabIndex = 4;
             this.label3.Text = "Preço:";
             // 
-            // txtCodBarras
-            // 
-            this.txtCodBarras.Location = new System.Drawing.Point(101, 70);
-            this.txtCodBarras.Name = "txtCodBarras";
-            this.txtCodBarras.Size = new System.Drawing.Size(168, 20);
-            this.txtCodBarras.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -183,9 +194,9 @@ namespace SistemaPET
             // gpbPesquisa
             // 
             this.gpbPesquisa.Controls.Add(this.btnPesquisar);
-            this.gpbPesquisa.Controls.Add(this.txtDesricaoPesquisa);
+            this.gpbPesquisa.Controls.Add(this.txtDescricaoPesquisa);
             this.gpbPesquisa.Controls.Add(this.label5);
-            this.gpbPesquisa.Controls.Add(this.dgvProdutos);
+            this.gpbPesquisa.Controls.Add(this.dgvPesquisa);
             this.gpbPesquisa.Location = new System.Drawing.Point(408, 2);
             this.gpbPesquisa.Name = "gpbPesquisa";
             this.gpbPesquisa.Size = new System.Drawing.Size(437, 446);
@@ -201,13 +212,14 @@ namespace SistemaPET
             this.btnPesquisar.TabIndex = 14;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // txtDesricaoPesquisa
+            // txtDescricaoPesquisa
             // 
-            this.txtDesricaoPesquisa.Location = new System.Drawing.Point(85, 29);
-            this.txtDesricaoPesquisa.Name = "txtDesricaoPesquisa";
-            this.txtDesricaoPesquisa.Size = new System.Drawing.Size(326, 20);
-            this.txtDesricaoPesquisa.TabIndex = 13;
+            this.txtDescricaoPesquisa.Location = new System.Drawing.Point(85, 29);
+            this.txtDescricaoPesquisa.Name = "txtDescricaoPesquisa";
+            this.txtDescricaoPesquisa.Size = new System.Drawing.Size(326, 20);
+            this.txtDescricaoPesquisa.TabIndex = 13;
             // 
             // label5
             // 
@@ -218,23 +230,16 @@ namespace SistemaPET
             this.label5.TabIndex = 12;
             this.label5.Text = "Descrição:";
             // 
-            // dgvProdutos
+            // dgvPesquisa
             // 
-            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Location = new System.Drawing.Point(6, 120);
-            this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.Size = new System.Drawing.Size(431, 320);
-            this.dgvProdutos.TabIndex = 0;
-            this.dgvProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellClick);
-            // 
-            // txtId
-            // 
-            this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(10, 416);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(33, 20);
-            this.txtId.TabIndex = 2;
-            this.txtId.Visible = false;
+            this.dgvPesquisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPesquisa.Location = new System.Drawing.Point(6, 120);
+            this.dgvPesquisa.Name = "dgvPesquisa";
+            this.dgvPesquisa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPesquisa.Size = new System.Drawing.Size(431, 320);
+            this.dgvPesquisa.TabIndex = 0;
+            this.dgvPesquisa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellClick);
+            this.dgvPesquisa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPesquisa_CellContentClick);
             // 
             // fmrCadProduto
             // 
@@ -250,7 +255,7 @@ namespace SistemaPET
             this.gpbDados.PerformLayout();
             this.gpbPesquisa.ResumeLayout(false);
             this.gpbPesquisa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisa)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -266,15 +271,15 @@ namespace SistemaPET
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPreco;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCodBarras;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gpbPesquisa;
         private System.Windows.Forms.Button btnPesquisar;
-        private System.Windows.Forms.TextBox txtDesricaoPesquisa;
+        private System.Windows.Forms.TextBox txtDescricaoPesquisa;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dgvProdutos;
+        private System.Windows.Forms.DataGridView dgvPesquisa;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.MaskedTextBox txtCodBarras;
     }
 }
