@@ -38,6 +38,7 @@
           <Property Name="idPacote" Type="int" Nullable="false" />
           <Property Name="idMercadoria" Type="int" />
           <Property Name="idServico" Type="int" />
+          <Property Name="vlrDesconto" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="item_pacoteos">
           <Key>
@@ -78,7 +79,7 @@
           </Key>
           <Property Name="idMercadoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="CodBarras" Type="varchar" MaxLength="13" />
+          <Property Name="CodBarras" Type="varchar" MaxLength="14" />
           <Property Name="Preco" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="ordemservico">
@@ -103,15 +104,15 @@
             <PropertyRef Name="idParceiroNegocio" />
           </Key>
           <Property Name="idParceiroNegocio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NomeRazao" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="CpfCnpj" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="NomeRazao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CpfCnpj" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="TipoPN" Type="int" Nullable="false" />
-          <Property Name="Logradouro" Type="varchar" MaxLength="100" />
+          <Property Name="Logradouro" Type="varchar" MaxLength="50" />
           <Property Name="Bairro" Type="varchar" MaxLength="50" />
           <Property Name="Cidade" Type="varchar" MaxLength="50" />
           <Property Name="Estado" Type="varchar" MaxLength="50" />
           <Property Name="Contato" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="Ativo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="pet">
@@ -119,9 +120,9 @@
             <PropertyRef Name="idPet" />
           </Key>
           <Property Name="idPet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Idade" Type="int" />
-          <Property Name="Descricao" Type="varchar" MaxLength="300" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" />
           <Property Name="idTipo" Type="int" Nullable="false" />
           <Property Name="idPN" Type="int" Nullable="false" />
           <Property Name="Sexo" Type="varchar" MaxLength="10" Nullable="false" />
@@ -135,7 +136,7 @@
           <Key>
             <PropertyRef Name="idPorte" />
           </Key>
-          <Property Name="idPorte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPorte" Type="int" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <EntityType Name="servico">
@@ -158,8 +159,8 @@
             <PropertyRef Name="idUsuario" />
           </Key>
           <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Senha" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="idPN" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="fk_Agendamento_Pacote1">
@@ -480,22 +481,8 @@
           <Property Name="TotalItem" Type="Decimal" Nullable="false" />
           <Property Name="idMercadoria" Type="Int32" Nullable="false" />
           <Property Name="idOrdemServico" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="mercadoria" Relationship="Self.fk_Item_MercadoriaOS_Mercadoria1" FromRole="item_mercadoriaos" ToRole="mercadoria" />
           <NavigationProperty Name="ordemservico" Relationship="Self.fk_Item_MercadoriaOS_OrdemServico1" FromRole="item_mercadoriaos" ToRole="ordemservico" />
-        </EntityType>
-        <EntityType Name="item_pacote">
-          <Key>
-            <PropertyRef Name="idItem_Pacote" />
-          </Key>
-          <Property Name="idItem_Pacote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QtdItem" Type="Int32" Nullable="false" />
-          <Property Name="ValorTotal" Type="Decimal" Nullable="false" />
-          <Property Name="idPacote" Type="Int32" Nullable="false" />
-          <Property Name="idMercadoria" Type="Int32" />
-          <Property Name="idServico" Type="Int32" />
-          <NavigationProperty Name="mercadoria" Relationship="Self.fk_Item_Pacote_Mercadoria1" FromRole="item_pacote" ToRole="mercadoria" />
-          <NavigationProperty Name="pacote" Relationship="Self.fk_Item_Pacote_Pacote1" FromRole="item_pacote" ToRole="pacote" />
-          <NavigationProperty Name="servico" Relationship="Self.fk_Item_Pacote_Servico1" FromRole="item_pacote" ToRole="servico" />
+          <NavigationProperty Name="mercadoria" Relationship="mydbModel.fk_Item_MercadoriaOS_Mercadoria1" FromRole="item_mercadoriaos" ToRole="mercadoria" />
         </EntityType>
         <EntityType Name="item_pacoteos">
           <Key>
@@ -525,18 +512,6 @@
           <NavigationProperty Name="ordemservico" Relationship="Self.fk_Item_ServicoOS_OrdemServico1" FromRole="item_servicoos" ToRole="ordemservico" />
           <NavigationProperty Name="servico" Relationship="Self.fk_Item_ServicoOS_Servico1" FromRole="item_servicoos" ToRole="servico" />
         </EntityType>
-        <EntityType Name="mercadoria">
-          <Key>
-            <PropertyRef Name="idMercadoria" />
-          </Key>
-          <Property Name="idMercadoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CodBarras" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="Preco" Type="Decimal" Nullable="false" />
-          <NavigationProperty Name="item_mercadoriaos" Relationship="Self.fk_Item_MercadoriaOS_Mercadoria1" FromRole="mercadoria" ToRole="item_mercadoriaos" />
-          <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Mercadoria1" FromRole="mercadoria" ToRole="item_pacote" />
-          <NavigationProperty Name="localestoque" Relationship="mydbModel.fk_LocalEstoque_Mercadoria1" FromRole="mercadoria" ToRole="localestoque" />
-        </EntityType>
         <EntityType Name="ordemservico">
           <Key>
             <PropertyRef Name="idOrdemServico" />
@@ -557,8 +532,8 @@
           <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="agendamento" Relationship="Self.fk_Agendamento_Pacote1" FromRole="pacote" ToRole="agendamento" />
-          <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Pacote1" FromRole="pacote" ToRole="item_pacote" />
           <NavigationProperty Name="item_pacoteos" Relationship="Self.fk_Item_PacoteOS_Pacote1" FromRole="pacote" ToRole="item_pacoteos" />
+          <NavigationProperty Name="item_pacote" Relationship="mydbModel.fk_Item_Pacote_Pacote1" FromRole="pacote" ToRole="item_pacote" />
         </EntityType>
         <EntityType Name="porte">
           <Key>
@@ -576,8 +551,8 @@
           <Property Name="Descricao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Preco" Type="Decimal" Nullable="false" />
           <NavigationProperty Name="agendamento" Relationship="Self.fk_Agendamento_Servico1" FromRole="servico" ToRole="agendamento" />
-          <NavigationProperty Name="item_pacote" Relationship="Self.fk_Item_Pacote_Servico1" FromRole="servico" ToRole="item_pacote" />
           <NavigationProperty Name="item_servicoos" Relationship="Self.fk_Item_ServicoOS_Servico1" FromRole="servico" ToRole="item_servicoos" />
+          <NavigationProperty Name="item_pacote" Relationship="mydbModel.fk_Item_Pacote_Servico1" FromRole="servico" ToRole="item_pacote" />
         </EntityType>
         <EntityType Name="tipopet">
           <Key>
@@ -586,16 +561,6 @@
           <Property Name="idTipoPet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="pet" Relationship="mydbModel.fk_Pet_TipoPet" FromRole="tipopet" ToRole="pet" />
-        </EntityType>
-        <EntityType Name="usuario">
-          <Key>
-            <PropertyRef Name="idUsuario" />
-          </Key>
-          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Senha" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idPN" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Usuario_ParceiroNegocio1" FromRole="usuario" ToRole="parceironegocio" />
         </EntityType>
         <Association Name="fk_Agendamento_Pacote1">
           <End Role="pacote" Type="Self.pacote" Multiplicity="0..1" />
@@ -621,18 +586,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Item_MercadoriaOS_Mercadoria1">
-          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="1" />
-          <End Role="item_mercadoriaos" Type="Self.item_mercadoriaos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mercadoria">
-              <PropertyRef Name="idMercadoria" />
-            </Principal>
-            <Dependent Role="item_mercadoriaos">
-              <PropertyRef Name="idMercadoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Item_MercadoriaOS_OrdemServico1">
           <End Role="ordemservico" Type="Self.ordemservico" Multiplicity="1" />
           <End Role="item_mercadoriaos" Type="Self.item_mercadoriaos" Multiplicity="*" />
@@ -642,42 +595,6 @@
             </Principal>
             <Dependent Role="item_mercadoriaos">
               <PropertyRef Name="idOrdemServico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Item_Pacote_Mercadoria1">
-          <End Role="mercadoria" Type="Self.mercadoria" Multiplicity="0..1" />
-          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mercadoria">
-              <PropertyRef Name="idMercadoria" />
-            </Principal>
-            <Dependent Role="item_pacote">
-              <PropertyRef Name="idMercadoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Item_Pacote_Pacote1">
-          <End Role="pacote" Type="Self.pacote" Multiplicity="1" />
-          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="pacote">
-              <PropertyRef Name="idPacote" />
-            </Principal>
-            <Dependent Role="item_pacote">
-              <PropertyRef Name="idPacote" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Item_Pacote_Servico1">
-          <End Role="servico" Type="Self.servico" Multiplicity="0..1" />
-          <End Role="item_pacote" Type="Self.item_pacote" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="servico">
-              <PropertyRef Name="idServico" />
-            </Principal>
-            <Dependent Role="item_pacote">
-              <PropertyRef Name="idServico" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -732,16 +649,13 @@
         <EntityContainer Name="banco" annotation:LazyLoadingEnabled="false">
           <EntitySet Name="agendamento" EntityType="Self.agendamento" />
           <EntitySet Name="item_mercadoriaos" EntityType="Self.item_mercadoriaos" />
-          <EntitySet Name="item_pacote" EntityType="Self.item_pacote" />
           <EntitySet Name="item_pacoteos" EntityType="Self.item_pacoteos" />
           <EntitySet Name="item_servicoos" EntityType="Self.item_servicoos" />
-          <EntitySet Name="mercadoria" EntityType="Self.mercadoria" />
           <EntitySet Name="ordemservico" EntityType="Self.ordemservico" />
           <EntitySet Name="pacote" EntityType="Self.pacote" />
           <EntitySet Name="porte" EntityType="Self.porte" />
           <EntitySet Name="servico" EntityType="Self.servico" />
           <EntitySet Name="tipopet" EntityType="Self.tipopet" />
-          <EntitySet Name="usuario" EntityType="Self.usuario" />
           <AssociationSet Name="fk_Agendamento_Pacote1" Association="Self.fk_Agendamento_Pacote1">
             <End Role="pacote" EntitySet="pacote" />
             <End Role="agendamento" EntitySet="agendamento" />
@@ -750,25 +664,9 @@
             <End Role="servico" EntitySet="servico" />
             <End Role="agendamento" EntitySet="agendamento" />
           </AssociationSet>
-          <AssociationSet Name="fk_Item_MercadoriaOS_Mercadoria1" Association="Self.fk_Item_MercadoriaOS_Mercadoria1">
-            <End Role="mercadoria" EntitySet="mercadoria" />
-            <End Role="item_mercadoriaos" EntitySet="item_mercadoriaos" />
-          </AssociationSet>
           <AssociationSet Name="fk_Item_MercadoriaOS_OrdemServico1" Association="Self.fk_Item_MercadoriaOS_OrdemServico1">
             <End Role="ordemservico" EntitySet="ordemservico" />
             <End Role="item_mercadoriaos" EntitySet="item_mercadoriaos" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Item_Pacote_Mercadoria1" Association="Self.fk_Item_Pacote_Mercadoria1">
-            <End Role="mercadoria" EntitySet="mercadoria" />
-            <End Role="item_pacote" EntitySet="item_pacote" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Item_Pacote_Pacote1" Association="Self.fk_Item_Pacote_Pacote1">
-            <End Role="pacote" EntitySet="pacote" />
-            <End Role="item_pacote" EntitySet="item_pacote" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Item_Pacote_Servico1" Association="Self.fk_Item_Pacote_Servico1">
-            <End Role="servico" EntitySet="servico" />
-            <End Role="item_pacote" EntitySet="item_pacote" />
           </AssociationSet>
           <AssociationSet Name="fk_Item_PacoteOS_OrdemServico1" Association="Self.fk_Item_PacoteOS_OrdemServico1">
             <End Role="ordemservico" EntitySet="ordemservico" />
@@ -786,10 +684,43 @@
             <End Role="servico" EntitySet="servico" />
             <End Role="item_servicoos" EntitySet="item_servicoos" />
           </AssociationSet>
+          <EntitySet Name="localestoque" EntityType="mydbModel.localestoque" />
+          <EntitySet Name="item_pacote" EntityType="mydbModel.item_pacote" />
+          <EntitySet Name="mercadoria" EntityType="mydbModel.mercadoria" />
+          <EntitySet Name="parceironegocio" EntityType="mydbModel.parceironegocio" />
           <EntitySet Name="pet" EntityType="mydbModel.pet" />
+          <EntitySet Name="usuario" EntityType="mydbModel.usuario" />
           <AssociationSet Name="fk_Agendamento_Pet1" Association="mydbModel.fk_Agendamento_Pet1">
             <End Role="pet" EntitySet="pet" />
             <End Role="agendamento" EntitySet="agendamento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_MercadoriaOS_Mercadoria1" Association="mydbModel.fk_Item_MercadoriaOS_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="item_mercadoriaos" EntitySet="item_mercadoriaos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Mercadoria1" Association="mydbModel.fk_Item_Pacote_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Pacote1" Association="mydbModel.fk_Item_Pacote_Pacote1">
+            <End Role="pacote" EntitySet="pacote" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Item_Pacote_Servico1" Association="mydbModel.fk_Item_Pacote_Servico1">
+            <End Role="servico" EntitySet="servico" />
+            <End Role="item_pacote" EntitySet="item_pacote" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LocalEstoque_Mercadoria1" Association="mydbModel.fk_LocalEstoque_Mercadoria1">
+            <End Role="mercadoria" EntitySet="mercadoria" />
+            <End Role="localestoque" EntitySet="localestoque" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pet_ParceiroNegocio1" Association="mydbModel.fk_Pet_ParceiroNegocio1">
+            <End Role="parceironegocio" EntitySet="parceironegocio" />
+            <End Role="pet" EntitySet="pet" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario_ParceiroNegocio1" Association="mydbModel.fk_Usuario_ParceiroNegocio1">
+            <End Role="parceironegocio" EntitySet="parceironegocio" />
+            <End Role="usuario" EntitySet="usuario" />
           </AssociationSet>
           <AssociationSet Name="fk_Pet_Porte1" Association="mydbModel.fk_Pet_Porte1">
             <End Role="porte" EntitySet="porte" />
@@ -799,29 +730,70 @@
             <End Role="tipopet" EntitySet="tipopet" />
             <End Role="pet" EntitySet="pet" />
           </AssociationSet>
-          <EntitySet Name="localestoque" EntityType="mydbModel.localestoque" />
-          <AssociationSet Name="fk_LocalEstoque_Mercadoria1" Association="mydbModel.fk_LocalEstoque_Mercadoria1">
-            <End Role="mercadoria" EntitySet="mercadoria" />
-            <End Role="localestoque" EntitySet="localestoque" />
-          </AssociationSet>
-          <EntitySet Name="parceironegocio" EntityType="mydbModel.parceironegocio" />
-          <AssociationSet Name="fk_Pet_ParceiroNegocio1" Association="mydbModel.fk_Pet_ParceiroNegocio1">
-            <End Role="parceironegocio" EntitySet="parceironegocio" />
-            <End Role="pet" EntitySet="pet" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Usuario_ParceiroNegocio1" Association="mydbModel.fk_Usuario_ParceiroNegocio1">
-            <End Role="parceironegocio" EntitySet="parceironegocio" />
-            <End Role="usuario" EntitySet="usuario" />
-          </AssociationSet>
           </EntityContainer>
+        <EntityType Name="localestoque">
+          <Key>
+            <PropertyRef Name="idLocalEstoque" />
+          </Key>
+          <Property Name="idLocalEstoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantidade" Type="Decimal" Nullable="false" />
+          <Property Name="Mercadoria_idMercadoria" Type="Int32" Nullable="false" />
+          <Property Name="EntradaSaida" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mercadoria" Relationship="mydbModel.fk_LocalEstoque_Mercadoria1" FromRole="localestoque" ToRole="mercadoria" />
+        </EntityType>
+        <EntityType Name="item_pacote">
+          <Key>
+            <PropertyRef Name="idItem_Pacote" />
+          </Key>
+          <Property Name="idItem_Pacote" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QtdItem" Type="Int32" Nullable="false" />
+          <Property Name="ValorTotal" Type="Decimal" Nullable="false" />
+          <Property Name="idPacote" Type="Int32" Nullable="false" />
+          <Property Name="idMercadoria" Type="Int32" />
+          <Property Name="idServico" Type="Int32" />
+          <Property Name="vlrDesconto" Type="Decimal" />
+          <NavigationProperty Name="mercadoria" Relationship="mydbModel.fk_Item_Pacote_Mercadoria1" FromRole="item_pacote" ToRole="mercadoria" />
+          <NavigationProperty Name="pacote" Relationship="mydbModel.fk_Item_Pacote_Pacote1" FromRole="item_pacote" ToRole="pacote" />
+          <NavigationProperty Name="servico" Relationship="mydbModel.fk_Item_Pacote_Servico1" FromRole="item_pacote" ToRole="servico" />
+        </EntityType>
+        <EntityType Name="mercadoria">
+          <Key>
+            <PropertyRef Name="idMercadoria" />
+          </Key>
+          <Property Name="idMercadoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descricao" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodBarras" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="Preco" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="item_mercadoriaos" Relationship="mydbModel.fk_Item_MercadoriaOS_Mercadoria1" FromRole="mercadoria" ToRole="item_mercadoriaos" />
+          <NavigationProperty Name="item_pacote" Relationship="mydbModel.fk_Item_Pacote_Mercadoria1" FromRole="mercadoria" ToRole="item_pacote" />
+          <NavigationProperty Name="localestoque" Relationship="mydbModel.fk_LocalEstoque_Mercadoria1" FromRole="mercadoria" ToRole="localestoque" />
+        </EntityType>
+        <EntityType Name="parceironegocio">
+          <Key>
+            <PropertyRef Name="idParceiroNegocio" />
+          </Key>
+          <Property Name="idParceiroNegocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeRazao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CpfCnpj" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPN" Type="Int32" Nullable="false" />
+          <Property Name="Logradouro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contato" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ativo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pet" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="parceironegocio" ToRole="pet" />
+          <NavigationProperty Name="usuario" Relationship="mydbModel.fk_Usuario_ParceiroNegocio1" FromRole="parceironegocio" ToRole="usuario" />
+        </EntityType>
         <EntityType Name="pet">
           <Key>
             <PropertyRef Name="idPet" />
           </Key>
           <Property Name="idPet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nome" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nome" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Idade" Type="Int32" />
-          <Property Name="Descricao" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="idTipo" Type="Int32" Nullable="false" />
           <Property Name="idPN" Type="Int32" Nullable="false" />
           <Property Name="Sexo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -831,9 +803,19 @@
           <Property Name="pelagem" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="raca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="agendamento" Relationship="mydbModel.fk_Agendamento_Pet1" FromRole="pet" ToRole="agendamento" />
+          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="pet" ToRole="parceironegocio" />
           <NavigationProperty Name="porte" Relationship="mydbModel.fk_Pet_Porte1" FromRole="pet" ToRole="porte" />
           <NavigationProperty Name="tipopet" Relationship="mydbModel.fk_Pet_TipoPet" FromRole="pet" ToRole="tipopet" />
-          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="pet" ToRole="parceironegocio" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+          </Key>
+          <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Senha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idPN" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="parceironegocio" Relationship="mydbModel.fk_Usuario_ParceiroNegocio1" FromRole="usuario" ToRole="parceironegocio" />
         </EntityType>
         <Association Name="fk_Agendamento_Pet1">
           <End Type="mydbModel.pet" Role="pet" Multiplicity="1" />
@@ -844,6 +826,90 @@
             </Principal>
             <Dependent Role="agendamento">
               <PropertyRef Name="idPet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_MercadoriaOS_Mercadoria1">
+          <End Type="mydbModel.mercadoria" Role="mercadoria" Multiplicity="1" />
+          <End Type="mydbModel.item_mercadoriaos" Role="item_mercadoriaos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="item_mercadoriaos">
+              <PropertyRef Name="idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Mercadoria1">
+          <End Type="mydbModel.mercadoria" Role="mercadoria" Multiplicity="0..1" />
+          <End Type="mydbModel.item_pacote" Role="item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Pacote1">
+          <End Type="mydbModel.pacote" Role="pacote" Multiplicity="1" />
+          <End Type="mydbModel.item_pacote" Role="item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pacote">
+              <PropertyRef Name="idPacote" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idPacote" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Item_Pacote_Servico1">
+          <End Type="mydbModel.servico" Role="servico" Multiplicity="0..1" />
+          <End Type="mydbModel.item_pacote" Role="item_pacote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servico">
+              <PropertyRef Name="idServico" />
+            </Principal>
+            <Dependent Role="item_pacote">
+              <PropertyRef Name="idServico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LocalEstoque_Mercadoria1">
+          <End Type="mydbModel.mercadoria" Role="mercadoria" Multiplicity="1" />
+          <End Type="mydbModel.localestoque" Role="localestoque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mercadoria">
+              <PropertyRef Name="idMercadoria" />
+            </Principal>
+            <Dependent Role="localestoque">
+              <PropertyRef Name="Mercadoria_idMercadoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pet_ParceiroNegocio1">
+          <End Type="mydbModel.parceironegocio" Role="parceironegocio" Multiplicity="1" />
+          <End Type="mydbModel.pet" Role="pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parceironegocio">
+              <PropertyRef Name="idParceiroNegocio" />
+            </Principal>
+            <Dependent Role="pet">
+              <PropertyRef Name="idPN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario_ParceiroNegocio1">
+          <End Type="mydbModel.parceironegocio" Role="parceironegocio" Multiplicity="1" />
+          <End Type="mydbModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="parceironegocio">
+              <PropertyRef Name="idParceiroNegocio" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="idPN" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -868,70 +934,6 @@
             </Principal>
             <Dependent Role="pet">
               <PropertyRef Name="idTipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="localestoque">
-          <Key>
-            <PropertyRef Name="idLocalEstoque" />
-          </Key>
-          <Property Name="idLocalEstoque" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Quantidade" Type="Decimal" Nullable="false" />
-          <Property Name="Mercadoria_idMercadoria" Type="Int32" Nullable="false" />
-          <Property Name="EntradaSaida" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="mercadoria" Relationship="mydbModel.fk_LocalEstoque_Mercadoria1" FromRole="localestoque" ToRole="mercadoria" />
-        </EntityType>
-        <Association Name="fk_LocalEstoque_Mercadoria1">
-          <End Type="mydbModel.mercadoria" Role="mercadoria" Multiplicity="1" />
-          <End Type="mydbModel.localestoque" Role="localestoque" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="mercadoria">
-              <PropertyRef Name="idMercadoria" />
-            </Principal>
-            <Dependent Role="localestoque">
-              <PropertyRef Name="Mercadoria_idMercadoria" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="parceironegocio">
-          <Key>
-            <PropertyRef Name="idParceiroNegocio" />
-          </Key>
-          <Property Name="idParceiroNegocio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomeRazao" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="CpfCnpj" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="TipoPN" Type="Int32" Nullable="false" />
-          <Property Name="Logradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Contato" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Ativo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="pet" Relationship="mydbModel.fk_Pet_ParceiroNegocio1" FromRole="parceironegocio" ToRole="pet" />
-          <NavigationProperty Name="usuario" Relationship="mydbModel.fk_Usuario_ParceiroNegocio1" FromRole="parceironegocio" ToRole="usuario" />
-        </EntityType>
-        <Association Name="fk_Pet_ParceiroNegocio1">
-          <End Type="mydbModel.parceironegocio" Role="parceironegocio" Multiplicity="1" />
-          <End Type="mydbModel.pet" Role="pet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parceironegocio">
-              <PropertyRef Name="idParceiroNegocio" />
-            </Principal>
-            <Dependent Role="pet">
-              <PropertyRef Name="idPN" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Usuario_ParceiroNegocio1">
-          <End Type="mydbModel.parceironegocio" Role="parceironegocio" Multiplicity="1" />
-          <End Type="mydbModel.usuario" Role="usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="parceironegocio">
-              <PropertyRef Name="idParceiroNegocio" />
-            </Principal>
-            <Dependent Role="usuario">
-              <PropertyRef Name="idPN" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -966,18 +968,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="item_pacote">
-            <EntityTypeMapping TypeName="mydbModel.item_pacote">
-              <MappingFragment StoreEntitySet="item_pacote">
-                <ScalarProperty Name="idItem_Pacote" ColumnName="idItem_Pacote" />
-                <ScalarProperty Name="QtdItem" ColumnName="QtdItem" />
-                <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
-                <ScalarProperty Name="idPacote" ColumnName="idPacote" />
-                <ScalarProperty Name="idMercadoria" ColumnName="idMercadoria" />
-                <ScalarProperty Name="idServico" ColumnName="idServico" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="item_pacoteos">
             <EntityTypeMapping TypeName="mydbModel.item_pacoteos">
               <MappingFragment StoreEntitySet="item_pacoteos">
@@ -1001,16 +991,6 @@
                 <ScalarProperty Name="TotalItem" ColumnName="TotalItem" />
                 <ScalarProperty Name="idServico" ColumnName="idServico" />
                 <ScalarProperty Name="idOrdemServico" ColumnName="idOrdemServico" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="mercadoria">
-            <EntityTypeMapping TypeName="mydbModel.mercadoria">
-              <MappingFragment StoreEntitySet="mercadoria">
-                <ScalarProperty Name="idMercadoria" ColumnName="idMercadoria" />
-                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="CodBarras" ColumnName="CodBarras" />
-                <ScalarProperty Name="Preco" ColumnName="Preco" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1058,13 +1038,53 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="usuario">
-            <EntityTypeMapping TypeName="mydbModel.usuario">
-              <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Senha" ColumnName="Senha" />
-                <ScalarProperty Name="idPN" ColumnName="idPN" />
+          <EntitySetMapping Name="localestoque">
+            <EntityTypeMapping TypeName="mydbModel.localestoque">
+              <MappingFragment StoreEntitySet="localestoque">
+                <ScalarProperty Name="EntradaSaida" ColumnName="EntradaSaida" />
+                <ScalarProperty Name="Mercadoria_idMercadoria" ColumnName="Mercadoria_idMercadoria" />
+                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+                <ScalarProperty Name="idLocalEstoque" ColumnName="idLocalEstoque" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="item_pacote">
+            <EntityTypeMapping TypeName="mydbModel.item_pacote">
+              <MappingFragment StoreEntitySet="item_pacote">
+                <ScalarProperty Name="vlrDesconto" ColumnName="vlrDesconto" />
+                <ScalarProperty Name="idServico" ColumnName="idServico" />
+                <ScalarProperty Name="idMercadoria" ColumnName="idMercadoria" />
+                <ScalarProperty Name="idPacote" ColumnName="idPacote" />
+                <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+                <ScalarProperty Name="QtdItem" ColumnName="QtdItem" />
+                <ScalarProperty Name="idItem_Pacote" ColumnName="idItem_Pacote" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mercadoria">
+            <EntityTypeMapping TypeName="mydbModel.mercadoria">
+              <MappingFragment StoreEntitySet="mercadoria">
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+                <ScalarProperty Name="CodBarras" ColumnName="CodBarras" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="idMercadoria" ColumnName="idMercadoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parceironegocio">
+            <EntityTypeMapping TypeName="mydbModel.parceironegocio">
+              <MappingFragment StoreEntitySet="parceironegocio">
+                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Contato" ColumnName="Contato" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="TipoPN" ColumnName="TipoPN" />
+                <ScalarProperty Name="CpfCnpj" ColumnName="CpfCnpj" />
+                <ScalarProperty Name="NomeRazao" ColumnName="NomeRazao" />
+                <ScalarProperty Name="idParceiroNegocio" ColumnName="idParceiroNegocio" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1086,30 +1106,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="localestoque">
-            <EntityTypeMapping TypeName="mydbModel.localestoque">
-              <MappingFragment StoreEntitySet="localestoque">
-                <ScalarProperty Name="EntradaSaida" ColumnName="EntradaSaida" />
-                <ScalarProperty Name="Mercadoria_idMercadoria" ColumnName="Mercadoria_idMercadoria" />
-                <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
-                <ScalarProperty Name="idLocalEstoque" ColumnName="idLocalEstoque" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="parceironegocio">
-            <EntityTypeMapping TypeName="mydbModel.parceironegocio">
-              <MappingFragment StoreEntitySet="parceironegocio">
-                <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="Contato" ColumnName="Contato" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
-                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
-                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
-                <ScalarProperty Name="TipoPN" ColumnName="TipoPN" />
-                <ScalarProperty Name="CpfCnpj" ColumnName="CpfCnpj" />
-                <ScalarProperty Name="NomeRazao" ColumnName="NomeRazao" />
-                <ScalarProperty Name="idParceiroNegocio" ColumnName="idParceiroNegocio" />
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="mydbModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="idPN" ColumnName="idPN" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

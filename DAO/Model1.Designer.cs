@@ -21,21 +21,21 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Pacote1", "pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.pacote), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Servico1", "servico", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.servico), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_MercadoriaOS_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "item_mercadoriaos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_mercadoriaos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_MercadoriaOS_OrdemServico1", "ordemservico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.ordemservico), "item_mercadoriaos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_mercadoriaos), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_Pacote_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.mercadoria), "item_pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacote), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_Pacote_Pacote1", "pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pacote), "item_pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacote), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_Pacote_Servico1", "servico", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.servico), "item_pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacote), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_PacoteOS_OrdemServico1", "ordemservico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.ordemservico), "item_pacoteos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacoteos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_PacoteOS_Pacote1", "pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pacote), "item_pacoteos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacoteos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_ServicoOS_OrdemServico1", "ordemservico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.ordemservico), "item_servicoos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_servicoos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_ServicoOS_Servico1", "servico", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.servico), "item_servicoos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_servicoos), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Agendamento_Pet1", "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pet), "agendamento", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.agendamento), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_Porte1", "porte", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.porte), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
-[assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_TipoPet", "tipopet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.tipopet), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_MercadoriaOS_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "item_mercadoriaos", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_mercadoriaos), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_Pacote_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.mercadoria), "item_pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacote), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_Pacote_Pacote1", "pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.pacote), "item_pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacote), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_Item_Pacote_Servico1", "servico", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DAO.servico), "item_pacote", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.item_pacote), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_LocalEstoque_Mercadoria1", "mercadoria", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.mercadoria), "localestoque", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.localestoque), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_ParceiroNegocio1", "parceironegocio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.parceironegocio), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 [assembly: EdmRelationshipAttribute("mydbModel", "fk_Usuario_ParceiroNegocio1", "parceironegocio", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.parceironegocio), "usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.usuario), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_Porte1", "porte", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.porte), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
+[assembly: EdmRelationshipAttribute("mydbModel", "fk_Pet_TipoPet", "tipopet", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DAO.tipopet), "pet", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DAO.pet), true)]
 
 #endregion
 
@@ -122,22 +122,6 @@ namespace DAO
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
         /// </summary>
-        public ObjectSet<item_pacote> item_pacote
-        {
-            get
-            {
-                if ((_item_pacote == null))
-                {
-                    _item_pacote = base.CreateObjectSet<item_pacote>("item_pacote");
-                }
-                return _item_pacote;
-            }
-        }
-        private ObjectSet<item_pacote> _item_pacote;
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
         public ObjectSet<item_pacoteos> item_pacoteos
         {
             get
@@ -166,22 +150,6 @@ namespace DAO
             }
         }
         private ObjectSet<item_servicoos> _item_servicoos;
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        public ObjectSet<mercadoria> mercadoria
-        {
-            get
-            {
-                if ((_mercadoria == null))
-                {
-                    _mercadoria = base.CreateObjectSet<mercadoria>("mercadoria");
-                }
-                return _mercadoria;
-            }
-        }
-        private ObjectSet<mercadoria> _mercadoria;
     
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
@@ -266,18 +234,66 @@ namespace DAO
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
         /// </summary>
-        public ObjectSet<usuario> usuario
+        public ObjectSet<localestoque> localestoque
         {
             get
             {
-                if ((_usuario == null))
+                if ((_localestoque == null))
                 {
-                    _usuario = base.CreateObjectSet<usuario>("usuario");
+                    _localestoque = base.CreateObjectSet<localestoque>("localestoque");
                 }
-                return _usuario;
+                return _localestoque;
             }
         }
-        private ObjectSet<usuario> _usuario;
+        private ObjectSet<localestoque> _localestoque;
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        public ObjectSet<item_pacote> item_pacote
+        {
+            get
+            {
+                if ((_item_pacote == null))
+                {
+                    _item_pacote = base.CreateObjectSet<item_pacote>("item_pacote");
+                }
+                return _item_pacote;
+            }
+        }
+        private ObjectSet<item_pacote> _item_pacote;
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        public ObjectSet<mercadoria> mercadoria
+        {
+            get
+            {
+                if ((_mercadoria == null))
+                {
+                    _mercadoria = base.CreateObjectSet<mercadoria>("mercadoria");
+                }
+                return _mercadoria;
+            }
+        }
+        private ObjectSet<mercadoria> _mercadoria;
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        public ObjectSet<parceironegocio> parceironegocio
+        {
+            get
+            {
+                if ((_parceironegocio == null))
+                {
+                    _parceironegocio = base.CreateObjectSet<parceironegocio>("parceironegocio");
+                }
+                return _parceironegocio;
+            }
+        }
+        private ObjectSet<parceironegocio> _parceironegocio;
     
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
@@ -298,34 +314,18 @@ namespace DAO
         /// <summary>
         /// Nenhuma Documentação de Metadados disponível.
         /// </summary>
-        public ObjectSet<localestoque> localestoque
+        public ObjectSet<usuario> usuario
         {
             get
             {
-                if ((_localestoque == null))
+                if ((_usuario == null))
                 {
-                    _localestoque = base.CreateObjectSet<localestoque>("localestoque");
+                    _usuario = base.CreateObjectSet<usuario>("usuario");
                 }
-                return _localestoque;
+                return _usuario;
             }
         }
-        private ObjectSet<localestoque> _localestoque;
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        public ObjectSet<parceironegocio> parceironegocio
-        {
-            get
-            {
-                if ((_parceironegocio == null))
-                {
-                    _parceironegocio = base.CreateObjectSet<parceironegocio>("parceironegocio");
-                }
-                return _parceironegocio;
-            }
-        }
-        private ObjectSet<parceironegocio> _parceironegocio;
+        private ObjectSet<usuario> _usuario;
 
         #endregion
 
@@ -348,14 +348,6 @@ namespace DAO
         }
     
         /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet item_pacote. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
-        /// </summary>
-        public void AddToitem_pacote(item_pacote item_pacote)
-        {
-            base.AddObject("item_pacote", item_pacote);
-        }
-    
-        /// <summary>
         /// Método preterido para adicionar um novo objeto ao EntitySet item_pacoteos. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
         /// </summary>
         public void AddToitem_pacoteos(item_pacoteos item_pacoteos)
@@ -369,14 +361,6 @@ namespace DAO
         public void AddToitem_servicoos(item_servicoos item_servicoos)
         {
             base.AddObject("item_servicoos", item_servicoos);
-        }
-    
-        /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet mercadoria. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
-        /// </summary>
-        public void AddTomercadoria(mercadoria mercadoria)
-        {
-            base.AddObject("mercadoria", mercadoria);
         }
     
         /// <summary>
@@ -420,11 +404,35 @@ namespace DAO
         }
     
         /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet usuario. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// Método preterido para adicionar um novo objeto ao EntitySet localestoque. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
         /// </summary>
-        public void AddTousuario(usuario usuario)
+        public void AddTolocalestoque(localestoque localestoque)
         {
-            base.AddObject("usuario", usuario);
+            base.AddObject("localestoque", localestoque);
+        }
+    
+        /// <summary>
+        /// Método preterido para adicionar um novo objeto ao EntitySet item_pacote. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// </summary>
+        public void AddToitem_pacote(item_pacote item_pacote)
+        {
+            base.AddObject("item_pacote", item_pacote);
+        }
+    
+        /// <summary>
+        /// Método preterido para adicionar um novo objeto ao EntitySet mercadoria. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// </summary>
+        public void AddTomercadoria(mercadoria mercadoria)
+        {
+            base.AddObject("mercadoria", mercadoria);
+        }
+    
+        /// <summary>
+        /// Método preterido para adicionar um novo objeto ao EntitySet parceironegocio. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// </summary>
+        public void AddToparceironegocio(parceironegocio parceironegocio)
+        {
+            base.AddObject("parceironegocio", parceironegocio);
         }
     
         /// <summary>
@@ -436,19 +444,11 @@ namespace DAO
         }
     
         /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet localestoque. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
+        /// Método preterido para adicionar um novo objeto ao EntitySet usuario. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
         /// </summary>
-        public void AddTolocalestoque(localestoque localestoque)
+        public void AddTousuario(usuario usuario)
         {
-            base.AddObject("localestoque", localestoque);
-        }
-    
-        /// <summary>
-        /// Método preterido para adicionar um novo objeto ao EntitySet parceironegocio. Em vez disso, experimente usar o método .Add da propriedade ObjectSet&lt;T&gt; associada.
-        /// </summary>
-        public void AddToparceironegocio(parceironegocio parceironegocio)
-        {
-            base.AddObject("parceironegocio", parceironegocio);
+            base.AddObject("usuario", usuario);
         }
 
         #endregion
@@ -977,44 +977,6 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_MercadoriaOS_Mercadoria1", "mercadoria")]
-        public mercadoria mercadoria
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria").Value = value;
-            }
-        }
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<mercadoria> mercadoriaReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_MercadoriaOS_OrdemServico1", "ordemservico")]
         public ordemservico ordemservico
         {
@@ -1043,6 +1005,44 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ordemservico>("mydbModel.fk_Item_MercadoriaOS_OrdemServico1", "ordemservico", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_MercadoriaOS_Mercadoria1", "mercadoria")]
+        public mercadoria mercadoria
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria").Value = value;
+            }
+        }
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<mercadoria> mercadoriaReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<mercadoria>("mydbModel.fk_Item_MercadoriaOS_Mercadoria1", "mercadoria", value);
                 }
             }
         }
@@ -1228,6 +1228,30 @@ namespace DAO
         private Nullable<global::System.Int32> _idServico;
         partial void OnidServicoChanging(Nullable<global::System.Int32> value);
         partial void OnidServicoChanged();
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> vlrDesconto
+        {
+            get
+            {
+                return _vlrDesconto;
+            }
+            set
+            {
+                OnvlrDescontoChanging(value);
+                ReportPropertyChanging("vlrDesconto");
+                _vlrDesconto = StructuralObject.SetValidValue(value, "vlrDesconto");
+                ReportPropertyChanged("vlrDesconto");
+                OnvlrDescontoChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _vlrDesconto;
+        partial void OnvlrDescontoChanging(Nullable<global::System.Decimal> value);
+        partial void OnvlrDescontoChanged();
 
         #endregion
 
@@ -2653,28 +2677,6 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_Pacote_Pacote1", "item_pacote")]
-        public EntityCollection<item_pacote> item_pacote
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Pacote1", "item_pacote");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Pacote1", "item_pacote", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_PacoteOS_Pacote1", "item_pacoteos")]
         public EntityCollection<item_pacoteos> item_pacoteos
         {
@@ -2687,6 +2689,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item_pacoteos>("mydbModel.fk_Item_PacoteOS_Pacote1", "item_pacoteos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_Pacote_Pacote1", "item_pacote")]
+        public EntityCollection<item_pacote> item_pacote
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Pacote1", "item_pacote");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Pacote1", "item_pacote", value);
                 }
             }
         }
@@ -3409,6 +3433,44 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Pet_ParceiroNegocio1", "parceironegocio")]
+        public parceironegocio parceironegocio
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio").Value = value;
+            }
+        }
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<parceironegocio> parceironegocioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Pet_Porte1", "porte")]
         public porte porte
         {
@@ -3475,44 +3537,6 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<tipopet>("mydbModel.fk_Pet_TipoPet", "tipopet", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Pet_ParceiroNegocio1", "parceironegocio")]
-        public parceironegocio parceironegocio
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio").Value = value;
-            }
-        }
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<parceironegocio> parceironegocioReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<parceironegocio>("mydbModel.fk_Pet_ParceiroNegocio1", "parceironegocio", value);
                 }
             }
         }
@@ -3765,28 +3789,6 @@ namespace DAO
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_Pacote_Servico1", "item_pacote")]
-        public EntityCollection<item_pacote> item_pacote
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Servico1", "item_pacote");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Servico1", "item_pacote", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Nenhuma Documentação de Metadados disponível.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_ServicoOS_Servico1", "item_servicoos")]
         public EntityCollection<item_servicoos> item_servicoos
         {
@@ -3799,6 +3801,28 @@ namespace DAO
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item_servicoos>("mydbModel.fk_Item_ServicoOS_Servico1", "item_servicoos", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Nenhuma Documentação de Metadados disponível.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("mydbModel", "fk_Item_Pacote_Servico1", "item_pacote")]
+        public EntityCollection<item_pacote> item_pacote
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Servico1", "item_pacote");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<item_pacote>("mydbModel.fk_Item_Pacote_Servico1", "item_pacote", value);
                 }
             }
         }

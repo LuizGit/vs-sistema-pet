@@ -72,6 +72,12 @@
     <Compile Include="fmrAjusteEstoque.Designer.cs">
       <DependentUpon>fmrAjusteEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmrCadastroPacote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrCadastroPacote.Designer.cs">
+      <DependentUpon>fmrCadastroPacote.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmrEspecie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     <Compile Include="Util.cs" />
     <EmbeddedResource Include="fmrAjusteEstoque.resx">
       <DependentUpon>fmrAjusteEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrCadastroPacote.resx">
+      <DependentUpon>fmrCadastroPacote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrEspecie.resx">
       <DependentUpon>fmrEspecie.cs</DependentUpon>
