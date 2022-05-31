@@ -42,7 +42,6 @@ namespace SistemaPET
             this.lblNome = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblCpfCnpj = new System.Windows.Forms.Label();
-            this.txtCpfCnpj = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblContato = new System.Windows.Forms.Label();
@@ -56,11 +55,12 @@ namespace SistemaPET
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
-            this.lblNomePesquisa = new System.Windows.Forms.Label();
-            this.txtNomePesquisar = new System.Windows.Forms.TextBox();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.cbmStatus = new System.Windows.Forms.ComboBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
+            this.cbmStatus = new System.Windows.Forms.ComboBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.txtNomePesquisar = new System.Windows.Forms.TextBox();
+            this.lblNomePesquisa = new System.Windows.Forms.Label();
+            this.txtCpfCnpj = new System.Windows.Forms.MaskedTextBox();
             this.bpbEndereco.SuspendLayout();
             this.gpbDados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPesquisaParceiro)).BeginInit();
@@ -183,14 +183,6 @@ namespace SistemaPET
             this.lblCpfCnpj.TabIndex = 12;
             this.lblCpfCnpj.Text = "CPF / CNPJ";
             // 
-            // txtCpfCnpj
-            // 
-            this.txtCpfCnpj.Location = new System.Drawing.Point(124, 60);
-            this.txtCpfCnpj.Name = "txtCpfCnpj";
-            this.txtCpfCnpj.Size = new System.Drawing.Size(133, 20);
-            this.txtCpfCnpj.TabIndex = 13;
-            this.txtCpfCnpj.WordWrap = false;
-            // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
@@ -245,13 +237,13 @@ namespace SistemaPET
             // 
             // gpbDados
             // 
+            this.gpbDados.Controls.Add(this.txtCpfCnpj);
             this.gpbDados.Controls.Add(this.cbmTipoParceiro);
             this.gpbDados.Controls.Add(this.lblTipoPN);
             this.gpbDados.Controls.Add(this.txtContato);
             this.gpbDados.Controls.Add(this.lblContato);
             this.gpbDados.Controls.Add(this.txtEmail);
             this.gpbDados.Controls.Add(this.lblEmail);
-            this.gpbDados.Controls.Add(this.txtCpfCnpj);
             this.gpbDados.Controls.Add(this.lblCpfCnpj);
             this.gpbDados.Controls.Add(this.txtNome);
             this.gpbDados.Controls.Add(this.lblNome);
@@ -327,30 +319,15 @@ namespace SistemaPET
             this.gpbPesquisa.TabStop = false;
             this.gpbPesquisa.Text = "Pesquisar";
             // 
-            // lblNomePesquisa
+            // btnPesquisar
             // 
-            this.lblNomePesquisa.AutoSize = true;
-            this.lblNomePesquisa.Location = new System.Drawing.Point(30, 42);
-            this.lblNomePesquisa.Name = "lblNomePesquisa";
-            this.lblNomePesquisa.Size = new System.Drawing.Size(38, 13);
-            this.lblNomePesquisa.TabIndex = 0;
-            this.lblNomePesquisa.Text = "Nome:";
-            // 
-            // txtNomePesquisar
-            // 
-            this.txtNomePesquisar.Location = new System.Drawing.Point(87, 35);
-            this.txtNomePesquisar.Name = "txtNomePesquisar";
-            this.txtNomePesquisar.Size = new System.Drawing.Size(312, 20);
-            this.txtNomePesquisar.TabIndex = 1;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(30, 76);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(40, 13);
-            this.lblStatus.TabIndex = 2;
-            this.lblStatus.Text = "Status:";
+            this.btnPesquisar.Location = new System.Drawing.Point(324, 96);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 4;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // cbmStatus
             // 
@@ -363,15 +340,40 @@ namespace SistemaPET
             this.cbmStatus.Size = new System.Drawing.Size(128, 21);
             this.cbmStatus.TabIndex = 3;
             // 
-            // btnPesquisar
+            // lblStatus
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(324, 96);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 4;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(30, 76);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(40, 13);
+            this.lblStatus.TabIndex = 2;
+            this.lblStatus.Text = "Status:";
+            // 
+            // txtNomePesquisar
+            // 
+            this.txtNomePesquisar.Location = new System.Drawing.Point(87, 35);
+            this.txtNomePesquisar.Name = "txtNomePesquisar";
+            this.txtNomePesquisar.Size = new System.Drawing.Size(312, 20);
+            this.txtNomePesquisar.TabIndex = 1;
+            // 
+            // lblNomePesquisa
+            // 
+            this.lblNomePesquisa.AutoSize = true;
+            this.lblNomePesquisa.Location = new System.Drawing.Point(30, 42);
+            this.lblNomePesquisa.Name = "lblNomePesquisa";
+            this.lblNomePesquisa.Size = new System.Drawing.Size(38, 13);
+            this.lblNomePesquisa.TabIndex = 0;
+            this.lblNomePesquisa.Text = "Nome:";
+            // 
+            // txtCpfCnpj
+            // 
+            this.txtCpfCnpj.Location = new System.Drawing.Point(124, 60);
+            this.txtCpfCnpj.Name = "txtCpfCnpj";
+            this.txtCpfCnpj.Size = new System.Drawing.Size(150, 20);
+            this.txtCpfCnpj.TabIndex = 20;
+            this.txtCpfCnpj.TextChanged += new System.EventHandler(this.txtCpfCnpj_TextChanged);
+            this.txtCpfCnpj.Enter += new System.EventHandler(this.txtCpfCnpj_Enter);
+            this.txtCpfCnpj.Leave += new System.EventHandler(this.txtCpfCnpj_Leave);
             // 
             // frmCadastroParceiroNegocio
             // 
@@ -418,7 +420,6 @@ namespace SistemaPET
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label lblCpfCnpj;
-        private System.Windows.Forms.TextBox txtCpfCnpj;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblContato;
@@ -437,5 +438,6 @@ namespace SistemaPET
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.TextBox txtNomePesquisar;
         private System.Windows.Forms.Label lblNomePesquisa;
+        private System.Windows.Forms.MaskedTextBox txtCpfCnpj;
     }
 }

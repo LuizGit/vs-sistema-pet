@@ -267,5 +267,51 @@ namespace SistemaPET
             Util.HeaderColunaGrid(dgvPesquisaParceiro, "Contato", "Contato");
             Util.HeaderColunaGrid(dgvPesquisaParceiro, "email", "E-mail");
         }
+
+        private void txtCpfCnpj_Leave(object sender, EventArgs e)
+        {
+            if (txtCpfCnpj.TextLength == 11 )
+            {
+                txtCpfCnpj.Mask = "000,000,000-00";
+            }
+            else if(txtCpfCnpj.TextLength > 11 && txtCpfCnpj.TextLength == 14)
+            {
+                txtCpfCnpj.Mask = "00,000,000/0000-00";
+            }
+            else if (txtCpfCnpj.TextLength < 11)
+            {
+                Util.ExibirMsg("- Campo CPF deve conter 11 numeros, e foi informado apenas:"+txtCpfCnpj.TextLength+"\n" +
+                    "**FAVOR VERIFICAR E INFORMAR NOVAMENTE.**");
+                txtCpfCnpj.Clear();
+            }
+            else if (txtCpfCnpj.TextLength > 14)
+            {
+                Util.ExibirMsg("- Campo CPF/CNPJ deve conter no maximo 14 numeros, e foi informado:" + txtCpfCnpj.TextLength + "\n" +
+                    "**FAVOR VERIFICAR E INFORMAR NOVAMENTE.**");
+                txtCpfCnpj.Clear();
+            }
+            else if (txtCpfCnpj.TextLength > 11 && txtCpfCnpj.TextLength <= 13)
+            {
+                Util.ExibirMsg("- Campo CNPJ deve conter 14 numeros, e foi informado apenas:" + txtCpfCnpj.TextLength + "\n" +
+                    "**FAVOR VERIFICAR E INFORMAR NOVAMENTE.**");
+                txtCpfCnpj.Clear();
+            }
+        }
+
+        private void txtCpfCnpj_Enter(object sender, EventArgs e)
+        {
+            txtCpfCnpj.Mask = "";
+            
+        }
+
+        private void txtCpfCnpj_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCpfCnpj.TextLength > 19)
+            {
+                Util.ExibirMsg("- Campo CPF / CNPJ não é valido!\n" +
+                    "**FAVOR VERIFICAR E INFORMAR NOVAMENTE.**");
+                txtCpfCnpj.Clear();
+            }
+        }
     }
 }
